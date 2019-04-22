@@ -7,10 +7,17 @@ import React from 'react';
 
 const AboutPage = () => (
   <div>
-    <div className="aboutPage">
-      <p>
-      Opie started his tattoo career in Southern California around 1995. Ever since then he has been traveling and working all over the country,allowing him to work with some of the best in the industry. Opie likes to focus on bold traditional tattoos and black work nature themed pieces.
-      </p>
+    <div className="clientInfo">
+      <p>Name: </p>
+      <p>Description: </p>
+      <p>Email: </p>
+      <p>Placement: </p>
+      <p>Ideal Timeframe: </p>
+      <p>Deposit: </p>
+      <p>Appointment: </p>
+    </div>
+    <div className="clientPhotos">
+        INSERT PHOTOS HERE
     </div>
   </div>
 );

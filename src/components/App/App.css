@@ -1,6 +1,9 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
+    background-color: black;
+    text-align: center;
+
 }
 
 .alert {
@@ -20,6 +23,29 @@ form {
 input {
     margin: 5px;
     margin-bottom: 10px;
+}
+
+.aboutPage {
+    color: white;
+}
+
+.FAQ {
+    color: white;
+}
+
+.location {
+    color: white;
+}
+
+.clientInfo {
+    color: white;
+    text-align: left;
+    
+}
+
+.clientPhotos {
+    color: white;
+    text-align: left;
 }
 
 .log-in, .log-out, .register {

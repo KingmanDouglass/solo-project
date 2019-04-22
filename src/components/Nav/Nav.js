@@ -1,45 +1,50 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
-import './Nav.css';
+import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import {Link} from 'react-router-dom';
 
-const Nav = (props) => (
-  <div className="nav">
-    <Link to="/home">
-      <h2 className="nav-title">Prime Solo Project</h2>
-    </Link>
-    <div className="nav-right">
-      <Link className="nav-link" to="/home">
-        {/* Show this link if they are logged in or not,
-        but call this link 'Home' if they are logged in,
-        and call this link 'Login / Register' if they are not */}
-        {props.user.id ? 'Home' : 'Login / Register'}
-      </Link>
-      {/* Show the link to the info page and the logout button if the user is logged in */}
-      {props.user.id && (
-        <>
-          <Link className="nav-link" to="/info">
-            Info Page
-          </Link>
-          <LogOutButton className="nav-link"/>
-        </>
-      )}
-      {/* Always show this link since the about page is not protected */}
-      <Link className="nav-link" to="/about">
-        About
-      </Link>
-    </div>
-  </div>
-);
+const styles = {
+    name: {
+        borderBottom: `10px solid yellow`,
+        fontWeight: 700,
+        color: "yellow",
+    },
+    info: {
+        fontWeight: 900,
+        color: "yellow",
+        borderBottom: `3px solid yellow`,
+    },
+    link: {
+      margin: '10px',
+    }
+  };
 
-// Instead of taking everything from state, we just want the user
-// object to determine if they are logged in
-// if they are logged in, we show them a few more links 
-// if you wanted you could write this code like this:
-// const mapStateToProps = ({ user }) => ({ user });
-const mapStateToProps = state => ({
-  user: state.user,
-});
+  //header being shown across mediums. Displays name and background image
+class Nav extends Component {
 
-export default connect(mapStateToProps)(Nav);
+    render() {
+        const { classes } = this.props;
+        return (
+        <div className="App">
+        <header className="App-header">
+        <Typography className={classes.name} variant="h2" gutterBottom>
+        OPIE SAN
+        </Typography>
+        <Typography className={classes.info} variant="h5" gutterBottom>
+        TATTOOING SINCE 1974
+        </Typography>
+        
+        <Link className={classes.link} to="/">Home</Link>
+        <Link className={classes.link} to="/about">About</Link>
+        <Link className={classes.link} to="/location">Location</Link>
+        <Link className={classes.link} to="/faq">FAQ</Link>
+        <Link className={classes.link} to="/PendingAppointment">Pending Appointment</Link>
+        </header>
+        </div>
+        )
+    }
+}
+
+
+
+export default withStyles(styles)(Nav);
