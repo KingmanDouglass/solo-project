@@ -1,4 +1,5 @@
 import React from 'react';
+import ChatKit from '../ChatKit/ChatMaster'
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -19,6 +20,7 @@ const AboutPage = () => (
     <div className="clientPhotos">
         INSERT PHOTOS HERE
     </div>
+    <ChatKit/>
   </div>
 );
 

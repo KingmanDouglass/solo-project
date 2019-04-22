@@ -5,6 +5,8 @@
   "proxy": "http://localhost:5000",
   "dependencies": {
     "@material-ui/core": "^3.9.3",
+    "@pusher/chatkit-client": "^1.4.1",
+    "@pusher/chatkit-server": "^1.1.0",
     "@uppy/core": "^0.30.5",
     "@uppy/dashboard": "^0.30.5",
     "@uppy/google-drive": "^0.30.5",
