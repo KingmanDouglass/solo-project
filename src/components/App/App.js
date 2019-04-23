@@ -20,6 +20,7 @@ import ConsultForm from '../ConsultForm/ConsultForm';
 import Location from '../Location/Location';
 import FAQ from '../FAQ/FAQ';
 import PendingAppointment from '../PendingAppointment/PendingAppointment';
+import Admin from '../Admin/Admin'
 
 import './App.css';
 
@@ -78,6 +79,11 @@ class App extends Component {
               exact
               path="/pendingappointment"
               component={PendingAppointment}
+            />
+             <Admin
+              exact
+              path="/admin"
+              component={Admin}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

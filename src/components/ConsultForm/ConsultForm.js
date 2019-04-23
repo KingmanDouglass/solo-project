@@ -57,7 +57,7 @@ class ConsultForm extends Component {
 
 componentDidMount = () => {
     this.props.dispatch({ type: 'GET_BODY_PARTS' });
-    console.log('GET BODY PARTS', this.props.reduxState.bodyPartReducer);
+    console.log('GET_BODY_PARTS', this.props.reduxState.bodyPartReducer);
     
     this.props.dispatch({ type: 'GET_STYLES' });
 }

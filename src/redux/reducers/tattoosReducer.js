@@ -1,6 +1,6 @@
 const tattoosReducer = (state = [], action) => {
         switch (action.type) {
-            case 'SET_PROJECTS':
+            case 'SET_TATTOOS':
                 return action.payload;
             default:
                 return state;
