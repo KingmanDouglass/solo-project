@@ -61,12 +61,13 @@ const styles = {
 class UserPage extends Component {
 
   nextPage = (event) => {
+    console.log('this.props', this.props);
     this.props.history.push('/form')
 }
 
-goToInstagram = (event) => {
-  this.props.history.push('/InitialForm')
-}
+// goToInstagram = (event) => {
+//   this.props.history.push('/InitialForm')
+// }
 
 
 
