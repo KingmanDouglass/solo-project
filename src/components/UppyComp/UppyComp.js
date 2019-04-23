@@ -45,7 +45,7 @@ const { Dashboard, DashboardModal, DragDrop, ProgressBar } = require('@uppy/reac
     // browserBackButtonClose: false
 //   })
 
-class TryFour extends React.Component {
+class UppyComp extends React.Component {
  
  
     constructor (props) {
@@ -112,7 +112,7 @@ class TryFour extends React.Component {
         <h5>Upload Reference Photos</h5>
         <div>
           <button onClick={this.handleModalClick}>
-            {this.state.open ? 'Close dashboard' : 'Browse'}
+            {this.state.open ? 'Close dashboard' : 'Upload Photos'}
           </button>
           <DashboardModal
             uppy={this.uppy2}
@@ -122,8 +122,8 @@ class TryFour extends React.Component {
           />
         </div>
 
-        {/* <h2>Drag Drop Area</h2>
-        <DragDrop
+        {/* <h2>Drag Drop Area</h2> */}
+        {/* <DragDrop
           uppy={this.uppy}
           locale={{
             strings: {
@@ -144,4 +144,4 @@ class TryFour extends React.Component {
 }
 
 
-export default (TryFour);
+export default (UppyComp);

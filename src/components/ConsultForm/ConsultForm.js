@@ -5,8 +5,8 @@ import Card from '@material-ui/core/Card';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { grey } from '@material-ui/core/colors';
-import Uppy from '../Uppy/Uppy'
+import { grey, red } from '@material-ui/core/colors';
+import UppyComp from '../UppyComp/UppyComp'
 // import Header from '../Header/Header'
 
 
@@ -20,12 +20,16 @@ const styles = {
     margin: 10,
     padding: 10,
     display: "inline-block",
- 
   },
   media: {
     height: 400,
   },
   menu: {
+    width: 200,
+  },
+  textField: {
+    // marginLeft: theme.spacing.unit,
+    // marginRight: theme.spacing.unit,
     width: 200,
   },
   name: {
@@ -68,12 +72,12 @@ componentDidMount = () => {
             <div className='mainDiv'>
             {/* <Header/> */}
             <Card className={classes.card}>
-            <form className={classes.container} noValidate autoComplete="off">
-            <Uppy/>
+            <UppyComp/>
+            {/* <form className={classes.container} noValidate autoComplete="off"> */}
 <br/>
                 <TextField
                     label="Tatto Description"
-                    // className={classes.textField}
+                    className={classes.textField}
                     value={this.state.newTattoo.desciption}
                     onChange={this.handleChange('desciption')}
                     margin="normal"
@@ -112,13 +116,11 @@ componentDidMount = () => {
                         }}
                         margin="normal"
                     >
-                        {/* {this.props.reduxState.bodyPartReducer.map(area => (
+                        {this.props.reduxState.bodyPartReducer.map(area => (
                             <MenuItem key={area.id} value={area.id}>
                             {area.areas}
                             </MenuItem>
-                        ))} */}
-                        <MenuItem>
-                        Face</MenuItem>
+                        ))}
                 </TextField>
 <br/>
                 <TextField
@@ -141,8 +143,10 @@ componentDidMount = () => {
                         ))}
                 </TextField>
 <br/>
+                {/* <UppyComp/> */}
+ <br/>
                 <Button variant="contained" color="primary" className={classes.button} onClick={this.addNewTattoo}>Submit</Button>          
-                </form>
+                {/* </form> */}
             </Card>
             </div>
         );
