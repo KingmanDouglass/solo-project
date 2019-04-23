@@ -18,10 +18,10 @@ class ChatApp extends Component {
 
     componentDidMount() {
         const chatManager = new ChatManager({
-            instanceLocator: "SEE_ENV",
-            userId: 'SEE_ENV',
+            instanceLocator: "SEE ENV",
+            userId: 'SEE ENV',
             tokenProvider: new TokenProvider({
-                url: 'SEE_ENV'
+                url: 'SEE ENV'
             })
         })
 
@@ -31,7 +31,7 @@ class ChatApp extends Component {
                 this.setState({ currentUser: currentUser })
 
                 return currentUser.subscribeToRoom({
-                    roomId: "SEE_ENV",
+                    roomId: "SEE ENV",
                     messageLimit: 100,
                     hooks: {
                         onMessage: message => {

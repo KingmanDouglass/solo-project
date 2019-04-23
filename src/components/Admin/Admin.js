@@ -48,7 +48,7 @@ class Pipeline extends Component {
         <TableHead>
           <TableRow>
             <TableCell>Client</TableCell>
-            <TableCell>Date</TableCell>
+            <TableCell>Status</TableCell>
             <TableCell>Style</TableCell>
             <TableCell>Description</TableCell>
           </TableRow>
@@ -59,8 +59,11 @@ class Pipeline extends Component {
               <TableCell component="th" scope="row">
                 {tattoo.username}
               </TableCell>
-              <TableCell component="th" scope="row">
+              {/* <TableCell component="th" scope="row">
                 <Moment format="YYYY/MM/DD" date={tattoo.ideal_timeframe}/>
+              </TableCell> */}
+              <TableCell>
+                {tattoo.status}
               </TableCell>
               <TableCell component="th" scope="row">
                 {tattoo.styles}

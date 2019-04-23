@@ -18,9 +18,9 @@ class Signup extends Component {
     }
     render() {
         return (
-            <div className="form-container">
+            <div className="ChatForm-container">
                 <h1>Let's Talk</h1>
-                <form onSubmit={this.handleSubmit} className="form">
+                <form onSubmit={this.handleSubmit} className="ChatForm">
                     <label htmlFor="email">What is your email?</label>
                     <input type="email" name="username" onChange={this.handleChange} className="input" />
                     <button className="ChatSubmit">Submit</button>

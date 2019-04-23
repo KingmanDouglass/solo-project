@@ -6,7 +6,7 @@ import ChatKit from '../ChatKit/ChatMaster'
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is, so it doesn't need 'connect()'
 
-const PendingAppointment = () => (
+const SelectedUser = () => (
   <div>
   {/* {this.props.tattooReduce.filter(tattoo => tattoo.id === Number(this.state.selection)).map(tattoo => */}
     <div className="clientInfo">
@@ -26,4 +26,4 @@ const PendingAppointment = () => (
   </div>
 );
 
-export default PendingAppointment;
+export default SelectedUser;

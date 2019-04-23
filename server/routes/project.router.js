@@ -4,9 +4,11 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  const queryText = `SELECT "user"."username", "tattoo"."ideal_timeframe", "styles"."styles", "tattoo"."description" FROM "tattoo" 
+  const queryText = `SELECT "user"."username", "tattoo"."ideal_timeframe", "styles"."styles", "tattoo"."description", "body_part"."areas", "tattoo"."email", "tattoo"."photos", "status"."status" FROM "tattoo" 
   JOIN "styles" ON "tattoo"."style_id" = "styles"."id"
-  JOIN "user" ON "tattoo"."user_id" = "user"."id";`;
+  JOIN "user" ON "tattoo"."user_id" = "user"."id"
+  JOIN "body_part" ON "tattoo"."area_id" = "body_part"."id"
+  JOIN "status" ON "tattoo"."status_id" = "status"."id";`;
   pool.query(queryText)
     .then((result) => { res.send(result.rows); })
     .catch((err) => {
