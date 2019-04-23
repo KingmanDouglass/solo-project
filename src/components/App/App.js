@@ -21,6 +21,7 @@ import Location from '../Location/Location';
 import FAQ from '../FAQ/FAQ';
 import PendingAppointment from '../PendingAppointment/PendingAppointment';
 import Admin from '../Admin/Admin'
+import SelectedUser from '../SelectedUser/SelectedUser'
 
 import './App.css';
 
@@ -60,30 +61,35 @@ class App extends Component {
               path="/info"
               component={InfoPage}
             />
-            <ConsultForm
+            <ProtectedRoute
               exact
               path="/form"
               component={ConsultForm}
             />
-            <Location
+            <Route
               exact
               path="/location"
               component={Location}
             />
-            <FAQ
+            <Route
               exact
               path="/faq"
               component={FAQ}
             />
-            <PendingAppointment
+            <ProtectedRoute
               exact
               path="/pendingappointment"
               component={PendingAppointment}
             />
-             <Admin
+             <ProtectedRoute
               exact
               path="/admin"
               component={Admin}
+            />
+            <ProtectedRoute
+              exact
+              path="/selecteduser"
+              component={SelectedUser}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

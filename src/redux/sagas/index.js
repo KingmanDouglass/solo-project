@@ -5,6 +5,7 @@ import userSaga from './userSaga';
 import bodyPartsSaga from './bodyPartsSaga';
 import stylesSaga from './stylesSaga';
 import tattoosSaga from './tattoosSaga';
+import currentIdSaga from './currentIdSaga'
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +22,6 @@ export default function* rootSaga() {
     bodyPartsSaga(),
     stylesSaga(),
     tattoosSaga(),
+    currentIdSaga()
   ]);
 }

@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  const queryText = `SELECT "user"."username", "tattoo"."ideal_timeframe", "styles"."styles", "tattoo"."description", "body_part"."areas", "tattoo"."email", "tattoo"."photos", "status"."status" FROM "tattoo" 
+  const queryText = `SELECT "tattoo"."user_id", "user"."username", "tattoo"."ideal_timeframe", "styles"."styles", "tattoo"."description", "body_part"."areas", "tattoo"."email", "tattoo"."photos", "status"."status" FROM "tattoo" 
   JOIN "styles" ON "tattoo"."style_id" = "styles"."id"
   JOIN "user" ON "tattoo"."user_id" = "user"."id"
   JOIN "body_part" ON "tattoo"."area_id" = "body_part"."id"
@@ -35,6 +35,34 @@ router.get('/areas', (req, res) => {
       res.send(results.rows)
   }).catch((error) => {
       console.log('Something went wrong getting body parts', error);
+      res.sendStatus(500);
+  })
+})
+
+router.get('/status', (req, res) => {
+  console.log('Getting all status');
+  pool.query(`SELECT * FROM "status"`)
+  .then((results) => {
+      res.send(results.rows)
+  }).catch((error) => {
+      console.log('Something went wrong getting statuses', error);
+      res.sendStatus(500);
+  })
+})
+
+router.get('/id/:id', (req, res) => {
+  console.log('Getting all current id', req.body);
+  const sqlText = `SELECT "tattoo"."user_id", "user"."username", "tattoo"."ideal_timeframe", "styles"."styles", "tattoo"."description", "body_part"."areas", "tattoo"."email", "tattoo"."photos", "status"."status" FROM "tattoo" 
+  JOIN "styles" ON "tattoo"."style_id" = "styles"."id"
+  JOIN "user" ON "tattoo"."user_id" = "user"."id"
+  JOIN "body_part" ON "tattoo"."area_id" = "body_part"."id"
+  JOIN "status" ON "tattoo"."status_id" = "status"."id"
+  WHERE "tattoo"."user_id" = $1;`
+  pool.query(sqlText, [req.body])
+  .then((results) => {
+      res.send(results.rows)
+  }).catch((error) => {
+      console.log('Something went wrong getting styles', error);
       res.sendStatus(500);
   })
 })

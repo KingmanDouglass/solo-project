@@ -8,7 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import Moment from 'react-moment';
+// import Moment from 'react-moment';
 
 //material ui styles
 const styles = theme => ({
@@ -23,10 +23,10 @@ const styles = theme => ({
   });
 
 //displays all the information from the database and does a map to acquire all the tag inputs
-class Pipeline extends Component {
+class Admin extends Component {
     
 //get all the information from the database as well as retrigger upon delete
-    componentDidMount = () => {
+  componentDidMount = () => {
         this.props.dispatch({ type: 'GET_TATTOOS' });
 }
 
@@ -35,9 +35,10 @@ class Pipeline extends Component {
         this.props.dispatch({ type: 'DELETE_TATTOO', payload: tattoo.name })
 }
 
-    handleView = (tattoo) => {
-      console.log('need to target specific ID');
-      
+    handleView = (event) => {
+      console.log('need to target specific ID', event.currentTarget.value);
+      this.props.dispatch({ type: 'GET_CURRENT_ID', payload: event.currentTarget.value });
+      this.props.history.push('/selecteduser');
         }
 
     render() {
@@ -55,7 +56,7 @@ class Pipeline extends Component {
         </TableHead>
         <TableBody>
         {this.props.reduxState.tattoosReducer.map(tattoo => (
-            <TableRow key={tattoo.id}>
+            <TableRow key={tattoo.user_id}>
               <TableCell component="th" scope="row">
                 {tattoo.username}
               </TableCell>
@@ -72,7 +73,7 @@ class Pipeline extends Component {
                 {tattoo.description}
               </TableCell>
               <TableCell component="th" scope="row">
-              <Button variant="contained" color="primary" className={classes.button} onClick={()=>{this.handleEdit ()}}>View</Button>
+              <Button value={tattoo.user_id} variant="contained" color="primary" className={classes.button} onClick={this.handleView}>View</Button>
               </TableCell>
               <TableCell component="th" scope="row">
               <Button variant="contained" color="primary" className={classes.button} onClick={()=>{this.handleDelete()}}>Delete</Button>
@@ -95,4 +96,4 @@ const mapReduxStateToProps = (reduxState) => ({
     reduxState
     });
 
-    export default connect(mapReduxStateToProps)(withStyles(styles)(Pipeline));
+export default connect(mapReduxStateToProps)(withStyles(styles)(Admin));
