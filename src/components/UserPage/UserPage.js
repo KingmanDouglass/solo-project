@@ -3,12 +3,23 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
-// import { red } from '@material-ui/core/colors';
+import { yellow } from '@material-ui/core/colors';
 import Image from './opie.png'
-// import beeInk from './beeInk.png'
+import beePic from './beePic.png'
+import tattoo from './tattoo.png'
+import bee from './bee.jpg'
 import Nav from '../Nav/Nav'
 // import LogOutButton from '../LogOutButton/LogOutButton';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper';
 
+const theme = createMuiTheme({
+  palette: {
+    primary: yellow,
+    // secondary: green,
+    // error: red,
+  },
+});
 
 const styles = {
     card: {
@@ -17,7 +28,7 @@ const styles = {
       maxWidth: 940,
       maxHeight:440,
       margin: 10,
-      padding: 10,
+      // padding: 10,
       display: "inline-block",
       backgroundImage: `url(${Image})`,
    
@@ -25,24 +36,25 @@ const styles = {
     },
     cardtwo: {
         minWidth: 450,
-        minHeight:200,
+        minHeight:400,
         maxWidth: 450,
-        maxHeight:200,
+        maxHeight:400,
         margin: 10,
-        padding: 10,
+        // padding: 10,
         display: "inline-block",
-        // backgroundImage: `url(${beeInk})`,
+        backgroundImage: `url(${tattoo})`,
+        backgroundSize: 230,
       },
       cardthree: {
         minWidth: 450,
-        minHeight:200,
+        minHeight:400,
         maxWidth: 450,
-        maxHeight:200,
+        maxHeight:400,
         margin: 10,
-        padding: 10,
+        // padding: 10,
         display: "inline-block",
-        // backgroundImage: `url(${beeInk})`,
-        alignSelf: 'stretch',
+        backgroundImage: `url(${beePic})`,
+        backgroundSize: 450,
       },
     media: {
       height: 400,
@@ -55,6 +67,24 @@ const styles = {
       fontWeight: 700,
       color: "black",
   },
+  consult: {
+    minWidth: 940,
+    minHeight:440,
+    maxWidth: 940,
+    maxHeight:440,
+    padding: 0,
+    lineHeight: '400px'
+    // textAlign: center,
+},
+links: {
+  minWidth: 450,
+  minHeight:200,
+  maxWidth: 450,
+  maxHeight:200,
+  padding: 0,
+  lineHeight: '350px'
+  // textAlign: center,
+},
   };
 
 //holds the header and the map function
@@ -74,20 +104,32 @@ class UserPage extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <section className="mainDiv">
+            <section className="test">
             {/* <Nav/> */}
             <div className="consult">
-            <Card className={classes.card}>
+            <Paper className={classes.card} elevation={1}>
+            <MuiThemeProvider theme={theme}>
+            <p className={classes.consult}>
                 <Button onClick={this.nextPage} variant="contained" color="primary" className={classes.button}>Consult and Schedule</Button>
-            </Card>
+            </p>
+              </MuiThemeProvider>
+            </Paper>
             </div>
             <div className="links">
-            <Card className={classes.cardtwo}>
-                <Button variant="contained" color="primary" className={classes.button} target="_blank" href="https://beeinktattoo.com/">Visit Bee Ink Tattoo's Website</Button>
-            </Card>
-            <Card className={classes.cardthree}>
-                <Button variant="contained" color="primary" className={classes.button} target="_blank" href="https://www.instagram.com/opie_san/?hl=en">Visit Opie's Instagram</Button>
-            </Card>
+            <Paper className={classes.cardtwo} elevation={1}>
+              <MuiThemeProvider theme={theme}>
+              <p className={classes.links}>
+                <Button variant="contained" color="primary" className={classes.button} target="_blank" href="https://beeinktattoo.com/">Visit Bee Ink Tattoo</Button>
+              </p>
+              </MuiThemeProvider>
+            </Paper>
+            <Paper className={classes.cardthree} elevation={1}>
+              <MuiThemeProvider theme={theme}>
+              <p className={classes.links}>
+                <Button variant="contained" color="primary" className={classes.button} target="_blank" href="https://www.instagram.com/opie_san/?hl=en">Visit Instagram</Button>
+              </p>
+                </MuiThemeProvider>
+            </Paper>
             </div>
             </section>
         )

@@ -16,7 +16,9 @@ const styles = {
         borderBottom: `3px solid yellow`,
     },
     link: {
-      margin: '10px',
+      margin: '70px',
+      textDecoration: 'none',
+      color: "yellow",
     }
   };
 
@@ -32,7 +34,7 @@ class Nav extends Component {
         OPIE SAN
         </Typography>
         <Typography className={classes.info} variant="h5" gutterBottom>
-        TATTOOING SINCE 1974
+        LIVE LAUGH LOVE
         </Typography>
         
         <Link className={classes.link} to="/">Home</Link>

@@ -20,6 +20,8 @@ const styles = {
     margin: 10,
     padding: 10,
     display: "inline-block",
+    backgroundColor: 'grey',
+    color: 'white'
   },
   media: {
     height: 400,
@@ -81,20 +83,65 @@ componentDidMount = () => {
             {/* <UppyComp/> */}
             {/* <form className={classes.container} noValidate autoComplete="off"> */}
 {/* <br/> */}
-                <TextField
+                {/* <TextField
                     label="Name"
                     className={classes.textField}
                     value={this.state.newTattoo.name}
                     onChange={this.handleChange('name')}
                     margin="normal"
-                    />
+                    /> */}
+
                 <TextField
+                    id="outlined-multiline-flexible"
+                    label="Name"
+                    multiline
+                    rowsMax="4"
+                    value={this.state.newTattoo.name}
+                    onChange={this.handleChange('name')}
+                    className={classes.textField}
+                    margin="normal"
+                    variant="outlined"
+        />
+
+                <TextField
+                    id="outlined-multiline-flexible"
+                    label="E-Mail"
+                    multiline
+                    rowsMax="4"
+                    value={this.state.newTattoo.email}
+                    onChange={this.handleChange('email')}
+                    className={classes.textField}
+                    margin="normal"
+                    variant="outlined"
+        />
+
+                {/* <TextField
                     label="E-Mail"
                     className={classes.textField}
                     value={this.state.newTattoo.email}
                     onChange={this.handleChange('email')}
                     margin="normal"
-                    />
+                    /> */}
+<br/>
+                {/* <TextField
+                    label="Tatto Description"
+                    className={classes.description}
+                    value={this.state.newTattoo.description}
+                    onChange={this.handleChange('description')}
+                    margin="normal"
+                    /> */}
+                
+                <TextField
+                    id="outlined-multiline-flexible"
+                    label="Description"
+                    multiline
+                    rowsMax="4"
+                    value={this.state.newTattoo.description}
+                    onChange={this.handleChange('description')}
+                    className={classes.textField}
+                    margin="normal"
+                    variant="outlined"
+        />
 <br/>
 <TextField
                     select
@@ -135,14 +182,6 @@ componentDidMount = () => {
                         </MenuItem>
                     ))}
                 </TextField>
-<br/>
-                <TextField
-                    label="Tatto Description"
-                    className={classes.description}
-                    value={this.state.newTattoo.description}
-                    onChange={this.handleChange('description')}
-                    margin="normal"
-                    />
 <br/>
                 {/* <TextField
                     label="Photos"
