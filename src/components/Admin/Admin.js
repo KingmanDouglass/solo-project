@@ -8,6 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import Footer from '../Footer/Footer'
 // import Moment from 'react-moment';
 
 //material ui styles
@@ -31,8 +32,9 @@ class Admin extends Component {
 }
 
 //when delete is clicked, dispatch request to remove from database
-    handleDelete = (tattoo) => {
-        this.props.dispatch({ type: 'DELETE_TATTOO', payload: tattoo.name })
+    handleDelete = (event) => {
+      console.log('need to target specific ID', event.currentTarget.value);
+        this.props.dispatch({ type: 'DELETE_TATTOO', payload: event.currentTarget.value })
 }
 
     handleView = (event) => {
@@ -76,7 +78,7 @@ class Admin extends Component {
               <Button value={tattoo.user_id} variant="contained" color="primary" className={classes.button} onClick={this.handleView}>View</Button>
               </TableCell>
               <TableCell component="th" scope="row">
-              <Button variant="contained" color="primary" className={classes.button} onClick={()=>{this.handleDelete()}}>Delete</Button>
+              <Button value={tattoo.user_id} variant="contained" color="primary" className={classes.button} onClick={this.handleDelete}>Delete</Button>
               </TableCell>
             </TableRow>
           ))}
@@ -84,10 +86,11 @@ class Admin extends Component {
 
         
 
-        
+        {/* <Footer /> */}
         
       </Table>
       </Paper>
+      
         );
     }
 }

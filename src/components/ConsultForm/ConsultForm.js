@@ -49,11 +49,15 @@ const styles = {
 class ConsultForm extends Component {
     state = {
         newTattoo: {
+            name: '',
             description: '',
+            email: '',
             photos: '',
             ideal_timeframe: '',
             area_id: '',
             style_id: '',
+            user_id: this.props.reduxState.user.id,
+            status: 2
         }
     }
 
@@ -71,6 +75,12 @@ componentDidMount = () => {
     console.log('GET_BODY_PARTS', this.props.reduxState.bodyPartReducer);
     
     this.props.dispatch({ type: 'GET_STYLES' });
+}
+
+addNewTattoo = (event) => {
+    console.log('need to post ID', this.state.newTattoo);
+      this.props.dispatch({ type: 'ADD_TATTOO', payload: this.state.newTattoo })
+      this.props.history.push('/home');
 }
 
     render() {      

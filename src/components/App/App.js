@@ -30,17 +30,22 @@ class App extends Component {
     this.props.dispatch({type: 'FETCH_USER'})
   }
 
+
+
   render() {
+    console.log('where is my route - props', this.props);
+    
     return (
-      <Router>
+      <Router> 
         <div>
+          {/* {this.condtionalRednder()} */}
           <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
             {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
-            <Route
+            <ProtectedRoute
               exact
               path="/about"
               component={AboutPage}
@@ -66,12 +71,12 @@ class App extends Component {
               path="/form"
               component={ConsultForm}
             />
-            <Route
+            <ProtectedRoute
               exact
               path="/location"
               component={Location}
             />
-            <Route
+            <ProtectedRoute
               exact
               path="/faq"
               component={FAQ}

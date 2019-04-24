@@ -89,8 +89,20 @@ router.get('/user/:id', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  const newProject = req.body;
-  console.log(req.body);
+  let tattoo = req.body;
+  const TWO = 2
+  console.log('Adding in tattoo:', tattoo);
+  let sqlText = `INSERT INTO tattoo (name, description, email, ideal_timeframe, area_id, style_id, user_id, status_id) VALUES 
+  ($1, $2, $3, $4, $5, $6, $7, $8)`;
+  pool.query(sqlText, [tattoo.name, tattoo.description, tattoo.email, tattoo.ideal_timeframe, tattoo.area_id, tattoo.style_id, tattoo.user_id, TWO ])
+    .then( (response) => {
+      res.sendStatus(201);
+    })
+    .catch( (error) => {
+      console.log('Failed to POST tattoo');
+      res.sendStatus(500);
+    })
+})
 
 // router.post('/image-upload', function(req, res) {
 //   singleUpload(req, res, function(err, some) {
@@ -101,35 +113,15 @@ router.post('/', (req, res) => {
 //     return res.json({'imageUrl': req.file.location});
 //   });
 // })
-  
-  const queryText = `INSERT INTO projects ("name", "description", "thumbnail", "website", "github", "date_completed", "tag_id")
-  VALUES ($1, $2, $3, $4, $5, $6, $7)`;
-  const queryValues = [
-    newProject.name,
-    newProject.description,
-    newProject.thumbnail,
-    newProject.website,
-    newProject.github,
-    newProject.date_completed,
-    newProject.tag_id,
-  ];
-  pool.query(queryText, queryValues)
-    .then(() => { res.sendStatus(201); })
-    .catch((err) => {
-      console.log('Error completing SELECT project query', err);
-      res.sendStatus(500);
-    });
-});
-
 
 router.delete('/:id', (req, res) => {
   console.log(`delete project`, req.params.id);
   
-  const sqlText = 'DELETE FROM "projects" WHERE name=$1';
+  const sqlText = 'DELETE FROM "tattoo" WHERE user_id=$1';
   pool.query(sqlText, [req.params.id])
     .then(() => { res.sendStatus(200); })
     .catch((err) => {
-      console.log('Error deleting SELECT project query', err);
+      console.log('Error deleting selected project query', err);
       res.sendStatus(500);
     });
 });

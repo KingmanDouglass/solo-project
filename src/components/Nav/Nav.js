@@ -3,6 +3,18 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import {Link} from 'react-router-dom';
 import './Nav.css';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+// import LogOutButton from '../LogOutButton/LogOutButton'
+
+const theme = createMuiTheme({
+    typography: {
+        "fontFamily": "Righteous",
+        "fontSize": 14,
+        "fontWeightLight": 300,
+        "fontWeightRegular": 400,
+        "fontWeightMedium": 500
+    },
+  });
 
 const styles = {
     name: {
@@ -30,18 +42,21 @@ class Nav extends Component {
         return (
         <div className="App">
         <header className="App-header">
+        <MuiThemeProvider theme={theme}>
         <Typography className={classes.name} variant="h2" gutterBottom>
         OPIE SAN
         </Typography>
         <Typography className={classes.info} variant="h5" gutterBottom>
         LIVE LAUGH LOVE
         </Typography>
+        </MuiThemeProvider>
         
         <Link className={classes.link} to="/">Home</Link>
         <Link className={classes.link} to="/about">About</Link>
         <Link className={classes.link} to="/location">Location</Link>
         <Link className={classes.link} to="/faq">FAQ</Link>
         <Link className={classes.link} to="/PendingAppointment">Pending Appointment</Link>
+        {/* <LogOutButton className="nav-link"/> */}
         </header>
         </div>
         )
