@@ -4,7 +4,7 @@
     font-family: sans-serif;
   } */
   .chat-button {
-    /* position: absolute; */
+    position: absolute;
     right: 10px;
     bottom: 10px;
     background: yellow;
@@ -55,7 +55,7 @@
   .input  {
     display: block;
     width: 100%;
-    /* margin: 20px auto; */
+    margin: 20px auto;
     height: 50px;
     font-size: 20px
   }
@@ -87,7 +87,7 @@
     background-color: white;
     padding: 0px 20px;
     overflow: scroll;
-    max-height: calc(100vh - 150px);
+    max-height: calc(100vh - 450px);
     margin-bottom: 35px;
   }
   .message-sender  {
@@ -105,7 +105,7 @@
     border: 0;
     border-top: 1px solid #e0e0e0;
     font-size: 18px;
-    /* padding-left: 2px */
+    padding-left: 2px
   }
   .message-submit  {
     width: 30%;
@@ -116,7 +116,8 @@
   }
   .input-field {
     /* position: absolute; */
+    background-color: black;
     bottom: 0;
     width: 100%;
-    /* display: flex; */
+    display: flex;
   }

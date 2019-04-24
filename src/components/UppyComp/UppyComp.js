@@ -64,7 +64,7 @@ class UppyComp extends React.Component {
     this.uppy2 = new Uppy({ id: 'uppy2', autoProceed: false, debug: true })
       .use(Tus, { endpoint: 'https://master.tus.io/files/' })
 
-    this.handleModalClick = this.handleModalClick.bind(this)
+    // this.handleModalClick = this.handleModalClick.bind(this)
   }
 
   componentWillUnmount () {
@@ -72,7 +72,7 @@ class UppyComp extends React.Component {
     this.uppy2.close()
   }
 
-  handleModalClick () {
+  handleModalClick =  () => {
     this.setState({
       open: !this.state.open
     })
@@ -80,11 +80,12 @@ class UppyComp extends React.Component {
 
   render () {
     const { showInlineDashboard } = this.state
+    // console.log('uppy rendered', this.state)
     return (
-      <div>
-        {/* <h1>React Examples</h1>
-
-        <h2>Upload Photos</h2>
+      <div className="mainDiv">
+        {/* <h1>React Examples</h1> */}
+<br/>
+        {/* <h2>Upload Photos</h2> */}
         <label>
           <input
             type="checkbox"
@@ -107,9 +108,9 @@ class UppyComp extends React.Component {
               { id: 'name', name: 'Name', placeholder: 'File name' }
             ]}
           />
-        )} */}
+        )}
 
-        <h5>Upload Reference Photos</h5>
+        {/* <h5>Upload Reference Photos</h5>
         <div>
           <button onClick={this.handleModalClick}>
             {this.state.open ? 'Close dashboard' : 'Upload Photos'}
@@ -120,7 +121,7 @@ class UppyComp extends React.Component {
             target={document.body}
             onRequestClose={() => this.setState({ open: false })}
           />
-        </div>
+        </div> */}
 
         {/* <h2>Drag Drop Area</h2> */}
         {/* <DragDrop

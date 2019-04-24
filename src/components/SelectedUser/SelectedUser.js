@@ -66,7 +66,7 @@ render() {
       <p>Deposit: {tattoo.name}</p>
       <p>Appointment: {tattoo.name}</p> */}
 
-      {this.conditionalRender()}
+      {/* {this.conditionalRender()} */}
 
       {/* <p>Name: </p>
       <p>Description: </p>
@@ -76,7 +76,17 @@ render() {
       <p>Deposit: </p>
       <p>Appointment: </p> */}
 
-
+<div>{this.props.reduxState.currentIdReducer.map(tattoo =>
+    <div>
+    <p>Name: {tattoo.username}</p>
+    <p>Description: {tattoo.description}</p>
+    <p>Email: {tattoo.email}</p>
+    <p>Placement: {tattoo.areas}</p>
+    <p>Ideal Timeframe: {tattoo.ideal_timeframe}</p>
+    <p>Appointment: {tattoo.name}</p>
+    <p>Status: {tattoo.status}</p>
+    </div>
+    )}</div>
 
     </div>
      {/* )} */}

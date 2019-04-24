@@ -13,10 +13,10 @@ import UppyComp from '../UppyComp/UppyComp'
 //material ui styles
 const styles = {
   card: {
-    minWidth: 950,
-    minHeight:580,
-    maxWidth: 950,
-    maxHeight:580,
+    minWidth: 1150,
+    minHeight:1180,
+    maxWidth: 1150,
+    maxHeight:1180,
     margin: 10,
     padding: 10,
     display: "inline-block",
@@ -31,6 +31,11 @@ const styles = {
     // marginLeft: theme.spacing.unit,
     // marginRight: theme.spacing.unit,
     width: 200,
+  },
+  description: {
+    // marginLeft: theme.spacing.unit,
+    // marginRight: theme.spacing.unit,
+    width: 900,
   },
   name: {
     borderBottom: `10px solid black`,
@@ -68,18 +73,74 @@ componentDidMount = () => {
 
     render() {      
         const { classes } = this.props;
+        console.log('form rendered')
         return (
             <div className='mainDiv'>
             {/* <Header/> */}
             <Card className={classes.card}>
-            <UppyComp/>
+            {/* <UppyComp/> */}
             {/* <form className={classes.container} noValidate autoComplete="off"> */}
+{/* <br/> */}
+                <TextField
+                    label="Name"
+                    className={classes.textField}
+                    value={this.state.newTattoo.name}
+                    onChange={this.handleChange('name')}
+                    margin="normal"
+                    />
+                <TextField
+                    label="E-Mail"
+                    className={classes.textField}
+                    value={this.state.newTattoo.email}
+                    onChange={this.handleChange('email')}
+                    margin="normal"
+                    />
+<br/>
+<TextField
+                    select
+                    label="Placement"
+                    className={classes.textField}
+                    value={this.state.newTattoo.area_id}
+                    onChange={this.handleChange('area_id')}
+                    SelectProps={{
+                        MenuProps: {
+                            className: classes.menu,
+                        },
+                    }}
+                    margin="normal"
+                >
+                    {this.props.reduxState.bodyPartReducer.map(area => (
+                        <MenuItem key={area.id} value={area.id}>
+                        {area.areas}
+                        </MenuItem>
+                    ))}
+                </TextField>
+{/* <br/> */}
+                <TextField
+                    select
+                    label="Style used"
+                    className={classes.textField}
+                    value={this.state.newTattoo.style_id}
+                    onChange={this.handleChange('style_id')}
+                    SelectProps={{
+                        MenuProps: {
+                            className: classes.menu,
+                        },
+                    }}
+                    margin="normal"
+                >
+                    {this.props.reduxState.styleIdReducer.map(style => (
+                        <MenuItem key={style.id} value={style.id}>
+                        {style.styles}
+                        </MenuItem>
+                    ))}
+                </TextField>
 <br/>
                 <TextField
                     label="Tatto Description"
-                    className={classes.textField}
-                    value={this.state.newTattoo.desciption}
-                    onChange={this.handleChange('desciption')}
+                    className={classes.description}
+                    value={this.state.newTattoo.description}
+                    onChange={this.handleChange('description')}
                     margin="normal"
                     />
 <br/>
@@ -90,7 +151,7 @@ componentDidMount = () => {
                     onChange={this.handleChange('photos')}
                     margin="normal"
                     /> */}
-<br/>
+{/* <br/> */}
                 <TextField
                     label="Ideal Start Date"
                     type="date"
@@ -103,47 +164,7 @@ componentDidMount = () => {
                         }}
                 />
 <br/>
-                <TextField
-                        select
-                        label="Placement"
-                        className={classes.textField}
-                        value={this.state.newTattoo.area_id}
-                        onChange={this.handleChange('area_id')}
-                        SelectProps={{
-                            MenuProps: {
-                                className: classes.menu,
-                            },
-                        }}
-                        margin="normal"
-                    >
-                        {this.props.reduxState.bodyPartReducer.map(area => (
-                            <MenuItem key={area.id} value={area.id}>
-                            {area.areas}
-                            </MenuItem>
-                        ))}
-                </TextField>
-<br/>
-                <TextField
-                        select
-                        label="Style used"
-                        className={classes.textField}
-                        value={this.state.newTattoo.style_id}
-                        onChange={this.handleChange('style_id')}
-                        SelectProps={{
-                            MenuProps: {
-                                className: classes.menu,
-                            },
-                        }}
-                        margin="normal"
-                    >
-                        {this.props.reduxState.styleIdReducer.map(style => (
-                            <MenuItem key={style.id} value={style.id}>
-                            {style.styles}
-                            </MenuItem>
-                        ))}
-                </TextField>
-<br/>
-                {/* <UppyComp/> */}
+                <UppyComp/>
  <br/>
                 <Button variant="contained" color="primary" className={classes.button} onClick={this.addNewTattoo}>Submit</Button>          
                 {/* </form> */}
