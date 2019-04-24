@@ -3,6 +3,10 @@ const pool = require('../modules/pool');
 
 const router = express.Router();
 
+const upload = require('../services/multer');
+
+const singleUpload = upload.single('image')
+
 router.get('/', (req, res) => {
   const queryText = `SELECT "tattoo"."user_id", "user"."username", "tattoo"."ideal_timeframe", "styles"."styles", "tattoo"."description", "body_part"."areas", "tattoo"."email", "tattoo"."photos", "status"."status" FROM "tattoo" 
   JOIN "styles" ON "tattoo"."style_id" = "styles"."id"
@@ -70,6 +74,16 @@ router.get('/id/:id', (req, res) => {
 router.post('/', (req, res) => {
   const newProject = req.body;
   console.log(req.body);
+
+router.post('/image-upload', function(req, res) {
+  singleUpload(req, res, function(err, some) {
+    if (err) {
+      return res.status(422).send({errors: [{title: 'Image Upload Error', detail: err.message}] });
+    }
+
+    return res.json({'imageUrl': req.file.location});
+  });
+})
   
   const queryText = `INSERT INTO projects ("name", "description", "thumbnail", "website", "github", "date_completed", "tag_id")
   VALUES ($1, $2, $3, $4, $5, $6, $7)`;
