@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
+// import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import { yellow } from '@material-ui/core/colors';
 import Image from './opie.png'
 import beePic from './beePic.png'
 import tattoo from './tattoo.png'
-import bee from './bee.jpg'
-import Nav from '../Nav/Nav'
+// import bee from './bee.jpg'
+// import Nav from '../Nav/Nav'
 // import LogOutButton from '../LogOutButton/LogOutButton';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper';

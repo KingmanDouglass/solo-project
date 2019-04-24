@@ -1,29 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import ChatKit from '../ChatKit/ChatMaster'
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
+class PendingAppointment extends Component {
 
-const PendingAppointment = () => (
-  <div>
-  {/* {this.props.tattooReduce.filter(tattoo => tattoo.id === Number(this.state.selection)).map(tattoo => */}
-    <div className="clientInfo">
-      {/* <p>Name: {tattoo.name}</p>
+  componentDidMount = () => {
+    this.props.dispatch({ type: 'GET_CURRENT_USER', payload: this.props.reduxState.user.id });
+  }
+  
+  render() {
+  
+    const { classes } = this.props;
+    return (
+    <div>
+      <div className="clientInfo">
+  
+  <div>{this.props.reduxState.currentUserReducer.map(tattoo =>
+      <div>
+      <p>Name: {tattoo.username}</p>
       <p>Description: {tattoo.description}</p>
       <p>Email: {tattoo.email}</p>
-      <p>Placement: {tattoo.body_area}</p>
+      <p>Placement: {tattoo.areas}</p>
       <p>Ideal Timeframe: {tattoo.ideal_timeframe}</p>
-      <p>Deposit: {tattoo.name}</p>
-      <p>Appointment: {tattoo.name}</p> */}
+      <p>Appointment: {tattoo.name}</p>
+      <p>Status: {tattoo.status}</p>
+      </div>
+      )}</div>
+  
+      </div>
+      <ChatKit/>
     </div>
-    <div className="clientPhotos">
-        INSERT PHOTOS HERE
-    </div>
-    // ))}
-    <ChatKit/>
-  </div>
-);
-
-export default PendingAppointment;
+  )}};
+  
+  const mapReduxStateToProps = (reduxState) => ({
+      reduxState
+      });
+  
+  export default connect(mapReduxStateToProps)(PendingAppointment);

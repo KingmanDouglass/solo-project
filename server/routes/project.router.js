@@ -71,6 +71,23 @@ router.get('/id/:id', (req, res) => {
   })
 })
 
+router.get('/user/:id', (req, res) => {
+  console.log('Getting ONE current id', req.params.id);
+  const sqlText = `SELECT "tattoo"."user_id", "user"."username", "tattoo"."ideal_timeframe", "styles"."styles", "tattoo"."description", "body_part"."areas", "tattoo"."email", "tattoo"."photos", "status"."status", "body_part"."areas" FROM "tattoo" 
+  JOIN "styles" ON "tattoo"."style_id" = "styles"."id"
+  JOIN "user" ON "tattoo"."user_id" = "user"."id"
+  JOIN "body_part" ON "tattoo"."area_id" = "body_part"."id"
+  JOIN "status" ON "tattoo"."status_id" = "status"."id"
+  WHERE "tattoo"."user_id" = $1;`
+  pool.query(sqlText, [req.params.id])
+  .then((results) => {
+      res.send(results.rows)
+  }).catch((error) => {
+      console.log('Something went wrong getting current ID', error);
+      res.sendStatus(500);
+  })
+})
+
 router.post('/', (req, res) => {
   const newProject = req.body;
   console.log(req.body);

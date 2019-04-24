@@ -6,6 +6,7 @@ import bodyPartReducer from './bodyPartReducer';
 import styleIdReducer from './styleIdReducer';
 import tattoosReducer from './tattoosReducer';
 import currentIdReducer from './currentIdReducer';
+import currentUserReducer from './currentUserReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   styleIdReducer,
   tattoosReducer,
   currentIdReducer,
+  currentUserReducer,
 });
 
 export default rootReducer;
