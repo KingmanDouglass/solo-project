@@ -5,18 +5,14 @@ import Card from '@material-ui/core/Card';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-// import { grey, red } from '@material-ui/core/colors';
 import UppyComp from '../UppyComp/UppyComp'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { yellow } from '@material-ui/core/colors';
-// import Header from '../Header/Header'
 
 
 const theme = createMuiTheme({
     palette: {
       primary: yellow,
-      // secondary: green,
-      // error: red,
       typography: {
         fontFamily: 'Montserrat',
         fontSize: '5rem',
@@ -107,16 +103,6 @@ addNewTattoo = (event) => {
             {/* <Header/> */}
             <Card className={classes.card}>
             <MuiThemeProvider theme={theme}>
-            {/* <UppyComp/> */}
-            {/* <form className={classes.container} noValidate autoComplete="off"> */}
-{/* <br/> */}
-                {/* <TextField
-                    label="Name"
-                    className={classes.textField}
-                    value={this.state.newTattoo.name}
-                    onChange={this.handleChange('name')}
-                    margin="normal"
-                    /> */}
 
                 <TextField
                     id="filled-name"
@@ -143,23 +129,7 @@ addNewTattoo = (event) => {
                     margin="normal"
                     variant="filled"
         />
-
-                {/* <TextField
-                    label="E-Mail"
-                    className={classes.textField}
-                    value={this.state.newTattoo.email}
-                    onChange={this.handleChange('email')}
-                    margin="normal"
-                    /> */}
-<br/>
-                {/* <TextField
-                    label="Tatto Description"
-                    className={classes.description}
-                    value={this.state.newTattoo.description}
-                    onChange={this.handleChange('description')}
-                    margin="normal"
-                    /> */}
-                
+<br/>     
                 <TextField
                     id="filled-name"
                     label="Description"
@@ -195,7 +165,7 @@ addNewTattoo = (event) => {
                         </MenuItem>
                     ))}
                 </TextField>
-{/* <br/> */}
+
                 <TextField
                     id="filled-select-currency"
                     select
@@ -219,14 +189,7 @@ addNewTattoo = (event) => {
                     ))}
                 </TextField>
 <br/>
-                {/* <TextField
-                    label="Photos"
-                    className={classes.textField}
-                    value={this.state.newTattoo.photos}
-                    onChange={this.handleChange('photos')}
-                    margin="normal"
-                    /> */}
-{/* <br/> */}
+
                 <TextField
                     label="Ideal Start Date"
                     type="date"
@@ -243,7 +206,6 @@ addNewTattoo = (event) => {
                 <UppyComp/>
  <br/>
                 <Button variant="contained" color="primary" className={classes.button} onClick={this.addNewTattoo}>Submit</Button>          
-                {/* </form> */}
             </MuiThemeProvider>
             </Card>
             </div>
