@@ -5,10 +5,26 @@ import Card from '@material-ui/core/Card';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { grey, red } from '@material-ui/core/colors';
+// import { grey, red } from '@material-ui/core/colors';
 import UppyComp from '../UppyComp/UppyComp'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import { yellow } from '@material-ui/core/colors';
 // import Header from '../Header/Header'
 
+
+const theme = createMuiTheme({
+    palette: {
+      primary: yellow,
+      // secondary: green,
+      // error: red,
+      typography: {
+        fontFamily: 'Montserrat',
+        fontSize: '5rem',
+        textColor: 'white'
+      },
+  },
+  });
+  
 
 //material ui styles
 const styles = {
@@ -20,7 +36,7 @@ const styles = {
     margin: 10,
     padding: 10,
     display: "inline-block",
-    backgroundColor: 'grey',
+    backgroundColor: 'black',
     color: 'white'
   },
   media: {
@@ -90,6 +106,7 @@ addNewTattoo = (event) => {
             <div className='mainDiv'>
             {/* <Header/> */}
             <Card className={classes.card}>
+            <MuiThemeProvider theme={theme}>
             {/* <UppyComp/> */}
             {/* <form className={classes.container} noValidate autoComplete="off"> */}
 {/* <br/> */}
@@ -102,27 +119,29 @@ addNewTattoo = (event) => {
                     /> */}
 
                 <TextField
-                    id="outlined-multiline-flexible"
+                    id="filled-name"
                     label="Name"
+                    style={{backgroundColor: 'white'}}
                     multiline
                     rowsMax="4"
                     value={this.state.newTattoo.name}
                     onChange={this.handleChange('name')}
                     className={classes.textField}
                     margin="normal"
-                    variant="outlined"
+                    variant="filled"
         />
 
                 <TextField
-                    id="outlined-multiline-flexible"
+                    id="filled-name"
                     label="E-Mail"
+                    style={{backgroundColor: 'white'}}
                     multiline
                     rowsMax="4"
                     value={this.state.newTattoo.email}
                     onChange={this.handleChange('email')}
                     className={classes.textField}
                     margin="normal"
-                    variant="outlined"
+                    variant="filled"
         />
 
                 {/* <TextField
@@ -142,20 +161,23 @@ addNewTattoo = (event) => {
                     /> */}
                 
                 <TextField
-                    id="outlined-multiline-flexible"
+                    id="filled-name"
                     label="Description"
+                    style={{backgroundColor: 'white'}}
                     multiline
                     rowsMax="4"
                     value={this.state.newTattoo.description}
                     onChange={this.handleChange('description')}
                     className={classes.textField}
                     margin="normal"
-                    variant="outlined"
+                    variant="filled"
         />
 <br/>
 <TextField
+                    id="filled-select-currency"
                     select
                     label="Placement"
+                    style={{backgroundColor: 'white'}}
                     className={classes.textField}
                     value={this.state.newTattoo.area_id}
                     onChange={this.handleChange('area_id')}
@@ -165,6 +187,7 @@ addNewTattoo = (event) => {
                         },
                     }}
                     margin="normal"
+                    variant="filled"
                 >
                     {this.props.reduxState.bodyPartReducer.map(area => (
                         <MenuItem key={area.id} value={area.id}>
@@ -174,8 +197,10 @@ addNewTattoo = (event) => {
                 </TextField>
 {/* <br/> */}
                 <TextField
+                    id="filled-select-currency"
                     select
                     label="Style used"
+                    style={{backgroundColor: 'white'}}
                     className={classes.textField}
                     value={this.state.newTattoo.style_id}
                     onChange={this.handleChange('style_id')}
@@ -185,6 +210,7 @@ addNewTattoo = (event) => {
                         },
                     }}
                     margin="normal"
+                    variant="filled"
                 >
                     {this.props.reduxState.styleIdReducer.map(style => (
                         <MenuItem key={style.id} value={style.id}>
@@ -204,6 +230,7 @@ addNewTattoo = (event) => {
                 <TextField
                     label="Ideal Start Date"
                     type="date"
+                    style={{backgroundColor: 'white'}}
                     value={this.state.newTattoo.ideal_timeframe}
                     className={classes.textField}
                     onChange={this.handleChange('ideal_timeframe')}
@@ -217,6 +244,7 @@ addNewTattoo = (event) => {
  <br/>
                 <Button variant="contained" color="primary" className={classes.button} onClick={this.addNewTattoo}>Submit</Button>          
                 {/* </form> */}
+            </MuiThemeProvider>
             </Card>
             </div>
         );

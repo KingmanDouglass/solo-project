@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import { yellow } from '@material-ui/core/colors';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -8,8 +10,22 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import Footer from '../Footer/Footer'
 // import Moment from 'react-moment';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: yellow,
+    // secondary: green,
+    // error: red,
+    typography: {
+      fontFamily: 'Montserrat',
+      fontSize: '5rem',
+      textColor: 'white'
+    },
+},
+});
 
 //material ui styles
 const styles = theme => ({
@@ -20,7 +36,14 @@ const styles = theme => ({
     },
     table: {
       minWidth: 700,
+      backgroundColor: 'black',
+      color: 'white',
+      textColor: 'white'
     },
+    info: {
+      color: 'white',
+      fontSize: 13
+    }
   });
 
 //displays all the information from the database and does a map to acquire all the tag inputs
@@ -47,32 +70,57 @@ class Admin extends Component {
         const { classes } = this.props;
         return (
         <Paper className={classes.root}>
+        <MuiThemeProvider theme={theme}>
         <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell>Client</TableCell>
-            <TableCell>Status</TableCell>
-            <TableCell>Style</TableCell>
-            <TableCell>Description</TableCell>
+            <TableCell>
+            <Typography className={classes.info} variant="h5" gutterBottom>
+        Client
+            </Typography>
+            </TableCell>
+            <TableCell>
+            <Typography className={classes.info} variant="h5" gutterBottom>
+        Status
+            </Typography>
+            </TableCell>
+            <TableCell>
+            <Typography className={classes.info} variant="h5" gutterBottom>
+        Style
+            </Typography>
+            </TableCell>
+            <TableCell>
+            <Typography className={classes.info} variant="h5" gutterBottom>
+        Description
+            </Typography>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
         {this.props.reduxState.tattoosReducer.map(tattoo => (
             <TableRow key={tattoo.user_id}>
               <TableCell component="th" scope="row">
+              <Typography className={classes.info} variant="h5" gutterBottom>
                 {tattoo.username}
+                </Typography>
               </TableCell>
               {/* <TableCell component="th" scope="row">
                 <Moment format="YYYY/MM/DD" date={tattoo.ideal_timeframe}/>
               </TableCell> */}
               <TableCell>
+              <Typography className={classes.info} variant="h5" gutterBottom>
                 {tattoo.status}
+                </Typography>
               </TableCell>
               <TableCell component="th" scope="row">
+              <Typography className={classes.info} variant="h5" gutterBottom>
                 {tattoo.styles}
+                </Typography>
               </TableCell>
               <TableCell component="th" scope="row">
+              <Typography className={classes.info} variant="h5" gutterBottom>
                 {tattoo.description}
+                </Typography>
               </TableCell>
               <TableCell component="th" scope="row">
               <Button value={tattoo.user_id} variant="contained" color="primary" className={classes.button} onClick={this.handleView}>View</Button>
@@ -89,6 +137,7 @@ class Admin extends Component {
         {/* <Footer /> */}
         
       </Table>
+      </MuiThemeProvider>
       </Paper>
       
         );

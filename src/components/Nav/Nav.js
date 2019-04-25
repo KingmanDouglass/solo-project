@@ -8,7 +8,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 
 const theme = createMuiTheme({
     typography: {
-        "fontFamily": "Righteous",
+        "fontFamily": "Limelight",
         "fontSize": 14,
         "fontWeightLight": 300,
         "fontWeightRegular": 400,
