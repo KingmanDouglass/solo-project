@@ -22,6 +22,7 @@ import FAQ from '../FAQ/FAQ';
 import PendingAppointment from '../PendingAppointment/PendingAppointment';
 import Admin from '../Admin/Admin'
 import SelectedUser from '../SelectedUser/SelectedUser'
+import LogOutPage from '../LogOutPage/LogOutPage'
 
 import './App.css';
 
@@ -95,6 +96,11 @@ class App extends Component {
               exact
               path="/selecteduser"
               component={SelectedUser}
+            />
+            <ProtectedRoute
+              exact
+              path="/logoutpage"
+              component={LogOutPage}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

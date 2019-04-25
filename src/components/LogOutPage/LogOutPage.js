@@ -1,17 +1,18 @@
 import React from 'react';
-import './Footer.css'
-// import LogOutButton from '../LogOutButton/LogOutButton'
+import LogOutButton from '../LogOutButton/LogOutButton'
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is, so it doesn't need 'connect()'
 
-const Footer = () => (
-  <footer>
-    &copy; Prime Digital Academy
-    {/* <LogOutButton className="nav-link"/> */}
-  </footer>
+const LogOutPage = () => (
+  <div className="location">
+    <p>
+      K. Bye.
+      <LogOutButton className="nav-link"/>
+    </p>
+  </div>
 );
 
-export default Footer;
+export default LogOutPage;

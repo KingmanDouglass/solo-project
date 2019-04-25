@@ -56,6 +56,7 @@ class Nav extends Component {
         <Link className={classes.link} to="/location">Location</Link>
         <Link className={classes.link} to="/faq">FAQ</Link>
         <Link className={classes.link} to="/PendingAppointment">Pending Appointment</Link>
+        <Link className={classes.link} to="/logoutpage">Log Out</Link>
         {/* <LogOutButton className="nav-link"/> */}
         </header>
         </div>

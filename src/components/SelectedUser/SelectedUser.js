@@ -40,6 +40,12 @@ const styles = {
     display: "inline-block",
     background: 'black',
   },
+  cardtwo: {
+    margin: 10,
+    // padding: 10,
+    display: "inline-block",
+    background: 'black',
+  },
   info: {
     color: 'white',
     fontSize: 13
@@ -145,6 +151,10 @@ handleAdd = (event) => {
   this.props.history.push('/admin');
 }
 
+goBack = (event) => {
+  this.props.history.push('/admin');
+}
+
 handleChange = propertyName => {
   return(event) =>{
   this.setState({
@@ -160,8 +170,13 @@ handleChange = propertyName => {
 render() {
   const { classes } = this.props;
   return (
-    
+   
   <div>
+     <Paper className={classes.cardtwo} elevation={1}>
+    <MuiThemeProvider theme={theme}>
+    <Button variant="contained" color="primary" className={classes.button} onClick={this.goBack}>Back</Button>
+    </MuiThemeProvider>
+    </Paper>
     {/* <pre>{JSON.stringify(this.state)}</pre> */}
   {/* {this.props.currentIdReducer.map(tattoo => */}
     <div className="clientInfo">
@@ -293,6 +308,7 @@ render() {
       <SaveIcon value={this.props.reduxState.currentIdReducer.user_id} onClick={this.handleAdd}/>
     </MuiThemeProvider>
     </div>
+    <img src = {tattoo.photos}/>
     </Paper>
     )}</div>
 
