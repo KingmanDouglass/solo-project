@@ -7,6 +7,11 @@ import Typography from '@material-ui/core/Typography';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { yellow } from '@material-ui/core/colors';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton'
+import Edit from '@material-ui/icons/Edit';
+import Add from '@material-ui/icons/Add'
+import SaveIcon from '@material-ui/icons/Save';
+import TextField from '@material-ui/core/TextField';
 
 
 const theme = createMuiTheme({
@@ -45,6 +50,20 @@ const styles = {
 // or even care what the redux state is, so it doesn't need 'connect()'
 class SelectedUser extends Component {
 
+
+  state ={
+    editCurrent: false,
+    changeField: {
+        user_id: this.props.reduxState.currentIdReducer.user_id,
+        name: this.props.reduxState.currentIdReducer.name,
+        description: this.props.reduxState.currentIdReducer.description,
+        email: this.props.reduxState.currentIdReducer.email,
+        areas: this.props.reduxState.currentIdReducer.areas,
+        ideal_timeframe: this.props.reduxState.currentIdReducer.ideal_timeframe,
+        status: this.props.reduxState.currentIdReducer.status,
+
+    }
+  }
   
 
 // componentDidMount = () => {
@@ -88,8 +107,32 @@ class SelectedUser extends Component {
 //   }
 // }
 handleEdit = (event) => {
-  console.log('need to target specific ID', event.currentTarget.value);
-    // this.props.dispatch({ type: 'DELETE_TATTOO', payload: event.currentTarget.value })
+  console.log('editing idea');
+  console.log('state logging', this.state.changeField);
+  this.setState({
+    editCurrent: true,
+  })
+  console.log('what is edit currents state???', this.state.editCurrent);
+  console.log('what is my current id reducer??', this.props.reduxState.currentIdReducer); 
+}
+
+handleAdd = (event) => {
+  console.log('in handle add to send PUT');
+  this.setState({
+      editCurrent: false,
+  })
+  this.props.dispatch({type:'PUT_TATTOO', payload: this.state.changeField});
+}
+
+handleChange = propertyName => {
+  return(event) =>{
+  this.setState({
+    changeField: {
+          ...this.state.changeField,
+          [propertyName]: event.target.value,
+      }
+  });
+}
 }
 
 
@@ -118,7 +161,7 @@ render() {
       <p>Deposit: </p>
       <p>Appointment: </p> */}
 
-<div>{this.props.reduxState.currentIdReducer.map(tattoo =>
+{/* <div>{this.props.reduxState.currentIdReducer.map(tattoo =>
   <Paper className={classes.card} elevation={1}>
     <div>
     <Typography className={classes.info} variant="h5" gutterBottom>
@@ -147,7 +190,36 @@ render() {
     </MuiThemeProvider>
     </div>
     </Paper>
+    )}</div> */}
+
+
+
+<div>{this.props.reduxState.currentIdReducer.map(tattoo =>
+  <Paper className={classes.card} elevation={1}>
+    <div>
+<p>Name: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('username')} defaultValue={`${tattoo.username}`}/> : 
+    tattoo.username} </p>
+    <p>Description: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('description')} defaultValue={`${tattoo.description}`}/> : 
+    tattoo.description} </p>
+    <p>Email: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('email')} defaultValue={`${tattoo.email}`}/> : 
+    tattoo.email} </p>
+    <p>Placement: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('areas')} defaultValue={`${tattoo.areas}`}/> : 
+    tattoo.areas} </p>
+    <p>Ideal Timeframe: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('ideal_timeframe')} defaultValue={`${tattoo.ideal_timeframe}`}/> : 
+    tattoo.ideal_timeframe} </p>
+    {/* <p>Appointment: {this.state.editCurrent === true ? <Typography className={classes.info} variant="h5" gutterBottom onChange={this.handleChange('username')} defaultValue={`${tattoo.username}`}/> : 
+    tattoo.username} </p> */}
+    <p>Status: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('status')} defaultValue={`${tattoo.status}`}/> : 
+    tattoo.status} </p>
+    <MuiThemeProvider theme={theme}>
+      <Edit onClick={this.handleEdit}/>
+      <SaveIcon onClick={this.handleAdd}/>
+    </MuiThemeProvider>
+    </div>
+    </Paper>
     )}</div>
+
+
 
     </div>
      {/* )} */}

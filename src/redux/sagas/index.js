@@ -9,6 +9,7 @@ import currentIdSaga from './currentIdSaga'
 import currentUserSaga from './currentUserSaga';
 import deleteSaga from './deleteSaga';
 import postSaga from './postSaga';
+import putTattooSaga from './putTattooSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -29,5 +30,6 @@ export default function* rootSaga() {
     currentUserSaga(),
     deleteSaga(),
     postSaga(),
+    putTattooSaga(),
   ]);
 }
