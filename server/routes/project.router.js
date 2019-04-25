@@ -104,40 +104,55 @@ router.post('/', (req, res) => {
     })
 })
 
-
-router.put('/edit/:id', async (req, res) => {
-  const client = await pool.connect();
-
-  try {
-      console.log('in PUT for submission edit');
-      let tattooId = req.params.id;
-      console.log('Tattoo ID is', tattooId);
-      let changeField = req.body;
-      console.log(changeField);
-      console.log(changeField.username);
-
-      tattooQuery = `UPDATE "tattoo" SET "name" = $1, "description" = $2, "email" = $3,
-      "ideal_timeframe" = $4  WHERE "user_id" = $5;`;
-      body_partQuery = `UPDATE "body_part" SET "areas" = $1 WHERE "user_id" = $2;` 
-      statusQuery = `UPDATE "status" SET "status" = $1 WHERE "user_id" = $2;` 
-
-    await client.query('BEGIN')
-      const updateTattooResult = await client.query(tattooQuery,[changeField.username, changeField.description, changeField.email, changeField.ideal_timeframe, changeField.name, tattooId] );
-      const updateBodyPartResult =  await client.query(body_partQuery, [changeField.areas, changeField.userId]);
-      const updateStatusResult =  await client.query(statusQuery, [changeField.status, changeField.userId]);
-      console.log('UpdatedTattooResult is:', updateTattooResult);
-      console.log('UpdatedBODYPARTResult is:', updateBodyPartResult);
-      console.log('updateStatusResult is:', updateStatusResult);
-      await client.query('COMMIT')
+router.put('/edit/:id', (req, res) => {
+  let tattoo = req.body;
+  console.log('PUT in tattoo edit:', tattoo);
+  let sqlText = `UPDATE "tattoo" SET "description" = $1, "email" = $2, "area_id" = $3, "ideal_timeframe" = $4, "status_id" = $5 WHERE "user_id" = $6`;
+  pool.query(sqlText, [tattoo.description, tattoo.email, tattoo.area_id, tattoo.ideal_timeframe, tattoo.status_id, tattoo.user_id])
+    .then( (response) => {
       res.sendStatus(201);
-  } catch (error) {
-      await client.query('ROLLBACK')
-      console.log('Error UPDATE STUDENT', error);
+    })
+    .catch( (error) => {
+      console.log('Failed to POST tattoo');
       res.sendStatus(500);
-  } finally {
-      client.release()
-  }
-});
+    })
+})
+
+
+
+// router.put('/edit/:id', async (req, res) => {
+//   const client = await pool.connect();
+
+//   try {
+//       console.log('in PUT for submission edit');
+//       let tattooId = req.params.id;
+//       console.log('Tattoo ID is', tattooId);
+//       let changeField = req.body;
+//       console.log(changeField);
+//       console.log(changeField.username);
+
+//       tattooQuery = `UPDATE "tattoo" SET "name" = $1, "description" = $2, "email" = $3,
+//       "ideal_timeframe" = $4  WHERE "user_id" = $5;`;
+//       body_partQuery = `UPDATE "body_part" SET "areas" = $1 WHERE "user_id" = $2;` 
+//       statusQuery = `UPDATE "status" SET "status" = $1 WHERE "user_id" = $2;` 
+
+//     await client.query('BEGIN')
+//       const updateTattooResult = await client.query(tattooQuery,[changeField.username, changeField.description, changeField.email, changeField.ideal_timeframe, changeField.user_id] );
+//       const updateBodyPartResult =  await client.query(body_partQuery, [changeField.areas, changeField.user_Id]);
+//       const updateStatusResult =  await client.query(statusQuery, [changeField.status, changeField.user_Id]);
+//       console.log('UpdatedTattooResult is:', updateTattooResult);
+//       console.log('UpdatedBODYPARTResult is:', updateBodyPartResult);
+//       console.log('updateStatusResult is:', updateStatusResult);
+//       await client.query('COMMIT')
+//       res.sendStatus(201);
+//   } catch (error) {
+//       await client.query('ROLLBACK')
+//       console.log('Error UPDATE STUDENT', error);
+//       res.sendStatus(500);
+//   } finally {
+//       client.release()
+//   }
+// });
 
 
 // router.post('/image-upload', function(req, res) {

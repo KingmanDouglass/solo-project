@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ChatKit from '../ChatKit/ChatMaster'
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import CardMedia from '@material-ui/core/CardMedia';
 
 const styles = {
   card: {
@@ -57,6 +58,7 @@ class PendingAppointment extends Component {
       <Typography className={classes.info} variant="h5" gutterBottom>
       <p>Status: {tattoo.status}</p>
       </Typography>
+      <img src = {tattoo.photos}/>
       </div>
       </Paper>
       )}</div>

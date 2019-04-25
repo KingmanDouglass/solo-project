@@ -12,6 +12,7 @@ import Edit from '@material-ui/icons/Edit';
 import Add from '@material-ui/icons/Add'
 import SaveIcon from '@material-ui/icons/Save';
 import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
 
 
 const theme = createMuiTheme({
@@ -42,6 +43,14 @@ const styles = {
   info: {
     color: 'white',
     fontSize: 13
+  },
+  textField: {
+    // marginLeft: theme.spacing.unit,
+    // marginRight: theme.spacing.unit,
+    width: 200,
+  },
+  menu: {
+    width: 200,
   }
 }
 // This is one of our simplest components
@@ -54,18 +63,24 @@ class SelectedUser extends Component {
   state ={
     editCurrent: false,
     changeField: {
-        user_id: this.props.reduxState.currentIdReducer.user_id,
-        name: this.props.reduxState.currentIdReducer.name,
-        description: this.props.reduxState.currentIdReducer.description,
-        email: this.props.reduxState.currentIdReducer.email,
-        areas: this.props.reduxState.currentIdReducer.areas,
-        ideal_timeframe: this.props.reduxState.currentIdReducer.ideal_timeframe,
-        status: this.props.reduxState.currentIdReducer.status,
+        user_id: '',
+        name: '',
+        description: '',
+        email: '',
+        area_id: '',
+        ideal_timeframe: '',
+        status_id: '',
 
     }
   }
   
-
+  componentDidMount = () => {
+    this.props.dispatch({ type: 'GET_BODY_PARTS' });
+    console.log('GET_BODY_PARTS', this.props.reduxState.bodyPartReducer);
+    
+    this.props.dispatch({ type: 'GET_STYLES' });
+    this.props.dispatch({ type: 'GET_STATUS' });
+}
 // componentDidMount = () => {
 //   this.props.dispatch({ type: 'GET_CURRENT_ID' });
 // }
@@ -108,12 +123,17 @@ class SelectedUser extends Component {
 // }
 handleEdit = (event) => {
   console.log('editing idea');
-  console.log('state logging', this.state.changeField);
   this.setState({
     editCurrent: true,
+    changeField: {
+      user_id: 3
+    }
   })
+  console.log('event target', event.currentTarget.value);
+  
   console.log('what is edit currents state???', this.state.editCurrent);
-  console.log('what is my current id reducer??', this.props.reduxState.currentIdReducer); 
+  console.log('what is my current id reducer??', this.props.reduxState.currentIdReducer);
+  console.log('state logging', this.state.changeField);
 }
 
 handleAdd = (event) => {
@@ -122,6 +142,7 @@ handleAdd = (event) => {
       editCurrent: false,
   })
   this.props.dispatch({type:'PUT_TATTOO', payload: this.state.changeField});
+  this.props.history.push('/admin');
 }
 
 handleChange = propertyName => {
@@ -141,15 +162,16 @@ render() {
   return (
     
   <div>
+    {/* <pre>{JSON.stringify(this.state)}</pre> */}
   {/* {this.props.currentIdReducer.map(tattoo => */}
     <div className="clientInfo">
-      {/* <p>Name: {tattoo.name}</p>
-      <p>Description: {tattoo.description}</p>
-      <p>Email: {tattoo.email}</p>
-      <p>Placement: {tattoo.body_area}</p>
-      <p>Ideal Timeframe: {tattoo.ideal_timeframe}</p>
-      <p>Deposit: {tattoo.name}</p>
-      <p>Appointment: {tattoo.name}</p> */}
+      {/* <p>Name: {this.state.changeField.name}</p>
+      <p>Description: {this.state.changeField.description}</p>
+      <p>Email: {this.state.changeField.email}</p>
+      <p>Placement: {this.state.changeField.body_area}</p>
+      <p>Ideal Timeframe: {this.state.changeField.ideal_timeframe}</p>
+      <p>Deposit: {this.state.changeField.name}</p>
+      <p>Appoinnnntment: {this.state.changeField.name}</p> */}
 
       {/* {this.conditionalRender()} */}
 
@@ -197,23 +219,78 @@ render() {
 <div>{this.props.reduxState.currentIdReducer.map(tattoo =>
   <Paper className={classes.card} elevation={1}>
     <div>
-<p>Name: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('username')} defaultValue={`${tattoo.username}`}/> : 
-    tattoo.username} </p>
-    <p>Description: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('description')} defaultValue={`${tattoo.description}`}/> : 
-    tattoo.description} </p>
-    <p>Email: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('email')} defaultValue={`${tattoo.email}`}/> : 
-    tattoo.email} </p>
-    <p>Placement: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('areas')} defaultValue={`${tattoo.areas}`}/> : 
-    tattoo.areas} </p>
-    <p>Ideal Timeframe: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('ideal_timeframe')} defaultValue={`${tattoo.ideal_timeframe}`}/> : 
-    tattoo.ideal_timeframe} </p>
+    {/* <Typography className={classes.info} variant="h5" gutterBottom> Name: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('username')} defaultValue={`${tattoo.username}`}/> : 
+    tattoo.username} </Typography> */}
+    <Typography className={classes.info} variant="h5" gutterBottom>
+    <p>Name: {tattoo.username}</p>
+    </Typography>
+    <Typography className={classes.info} variant="h5" gutterBottom> Description: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('description')} defaultValue={`${tattoo.description}`}/> : 
+    tattoo.description} </Typography>
+    <Typography className={classes.info} variant="h5" gutterBottom> Email: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('email')} defaultValue={`${tattoo.email}`}/> : 
+    tattoo.email} </Typography>
+
+
+    <Typography className={classes.info} variant="h5" gutterBottom> Placement: {this.state.editCurrent === true ? <TextField 
+    id="filled-select-currency"
+    select
+    label="Placement"
+    style={{backgroundColor: 'white'}}
+    className={classes.textField}
+    style={{backgroundColor: 'white'}} 
+    onChange={this.handleChange('area_id')}
+    SelectProps={{
+        MenuProps: {
+            className: classes.menu,
+        },
+    }}
+    margin="normal"
+    variant="filled"
+    >
+    {this.props.reduxState.bodyPartReducer.map(area => (
+                        <MenuItem key={area.id} value={area.id}>
+                        {area.areas}
+                        </MenuItem>
+                    ))}</TextField> : 
+    tattoo.areas} </Typography>
+                    
+
+
+
+
+    <Typography className={classes.info} variant="h5" gutterBottom> Ideal Timeframe: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('ideal_timeframe')} defaultValue={`${tattoo.ideal_timeframe}`}/> : 
+    tattoo.ideal_timeframe} </Typography>
     {/* <p>Appointment: {this.state.editCurrent === true ? <Typography className={classes.info} variant="h5" gutterBottom onChange={this.handleChange('username')} defaultValue={`${tattoo.username}`}/> : 
     tattoo.username} </p> */}
-    <p>Status: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('status')} defaultValue={`${tattoo.status}`}/> : 
-    tattoo.status} </p>
+
+
+    <Typography className={classes.info} variant="h5" gutterBottom> Status: {this.state.editCurrent === true ? <TextField 
+    id="filled-select-currency"
+    select
+    label="Status"
+    style={{backgroundColor: 'white'}}
+    className={classes.textField}
+    style={{backgroundColor: 'white'}} 
+    onChange={this.handleChange('status_id')}
+    SelectProps={{
+        MenuProps: {
+            className: classes.menu,
+        },
+    }}
+    margin="normal"
+    variant="filled"
+    >
+    {this.props.reduxState.statusReducer.map(status => (
+                        <MenuItem key={status.id} value={status.id}>
+                        {status.status}
+                        </MenuItem>
+                    ))}</TextField> : 
+    tattoo.status} </Typography>
+
+
+
     <MuiThemeProvider theme={theme}>
-      <Edit onClick={this.handleEdit}/>
-      <SaveIcon onClick={this.handleAdd}/>
+      <Edit value={tattoo.user_id} onClick={this.handleEdit}/>
+      <SaveIcon value={this.props.reduxState.currentIdReducer.user_id} onClick={this.handleAdd}/>
     </MuiThemeProvider>
     </div>
     </Paper>
