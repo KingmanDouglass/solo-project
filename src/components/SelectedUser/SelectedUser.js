@@ -11,6 +11,8 @@ import Edit from '@material-ui/icons/Edit';
 import SaveIcon from '@material-ui/icons/Save';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import qs from 'query-string'
+import { withRouter } from 'react-router'
 
 
 const theme = createMuiTheme({
@@ -46,6 +48,7 @@ const styles = {
   },
   textField: {
     width: 200,
+    color: 'black',
   },
   menu: {
     width: 200,
@@ -72,21 +75,22 @@ class SelectedUser extends Component {
   componentDidMount = () => {
     this.props.dispatch({ type: 'GET_BODY_PARTS' });
     console.log('GET_BODY_PARTS', this.props.reduxState.bodyPartReducer);
-    
     this.props.dispatch({ type: 'GET_STYLES' });
     this.props.dispatch({ type: 'GET_STATUS' });
 }
 
 handleEdit = (event) => {
+  const searchObject = qs.parse(this.props.location.search)
+  console.log('searchObject', searchObject.id);
+  
   console.log('editing idea');
   this.setState({
     editCurrent: true,
     changeField: {
-      user_id: 3
+      user_id: searchObject.id
     }
   })
   console.log('event target', event.currentTarget.value);
-  
   console.log('what is edit currents state???', this.state.editCurrent);
   console.log('what is my current id reducer??', this.props.reduxState.currentIdReducer);
   console.log('state logging', this.state.changeField);
@@ -137,10 +141,18 @@ render() {
     <Typography className={classes.info} variant="h5" gutterBottom>
     <p>Name: {tattoo.username}</p>
     </Typography>
+
+    
     <Typography className={classes.info} variant="h5" gutterBottom> Description: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('description')} defaultValue={`${tattoo.description}`}/> : 
     tattoo.description} </Typography>
-    <Typography className={classes.info} variant="h5" gutterBottom> Email: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('email')} defaultValue={`${tattoo.email}`}/> : 
-    tattoo.email} </Typography>
+
+    <Typography className={classes.info} variant="h5" gutterBottom>
+    <p>Email: {tattoo.email}</p>
+    </Typography>
+
+
+    {/* <Typography className={classes.info} variant="h5" gutterBottom> Email: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('email')} defaultValue={`${tattoo.email}`}/> : 
+    tattoo.email} </Typography> */}
 
 
     <Typography className={classes.info} variant="h5" gutterBottom> Placement: {this.state.editCurrent === true ? <TextField 
@@ -149,7 +161,8 @@ render() {
     label="Placement"
     style={{backgroundColor: 'white'}}
     className={classes.textField}
-    style={{backgroundColor: 'white'}} 
+    value={this.state.changeField.area_id}
+    style={{backgroundColor: 'white', color: 'black'}} 
     onChange={this.handleChange('area_id')}
     SelectProps={{
         MenuProps: {
@@ -167,11 +180,13 @@ render() {
     tattoo.areas} </Typography>
                     
 
+    <Typography className={classes.info} variant="h5" gutterBottom>
+    <p>Ideal Timeframe: {tattoo.ideal_timeframe}</p>
+    </Typography>
 
 
-
-    <Typography className={classes.info} variant="h5" gutterBottom> Ideal Timeframe: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('ideal_timeframe')} defaultValue={`${tattoo.ideal_timeframe}`}/> : 
-    tattoo.ideal_timeframe} </Typography>
+    {/* <Typography className={classes.info} variant="h5" gutterBottom> Ideal Timeframe: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('ideal_timeframe')} defaultValue={`${tattoo.ideal_timeframe}`}/> : 
+    tattoo.ideal_timeframe} </Typography> */}
     {/* <p>Appointment: {this.state.editCurrent === true ? <Typography className={classes.info} variant="h5" gutterBottom onChange={this.handleChange('username')} defaultValue={`${tattoo.username}`}/> : 
     tattoo.username} </p> */}
 
@@ -181,6 +196,7 @@ render() {
     select
     label="Status"
     style={{backgroundColor: 'white'}}
+    value={this.state.changeField.status_id}
     className={classes.textField}
     style={{backgroundColor: 'white'}} 
     onChange={this.handleChange('status_id')}
@@ -221,7 +237,7 @@ render() {
 )}};
 
 const mapReduxStateToProps = (reduxState) => ({
-    reduxState
-    });
+  reduxState
+  });
 
-export default connect(mapReduxStateToProps)(withStyles(styles)(SelectedUser));
+export default withRouter(connect(mapReduxStateToProps)(withStyles(styles)(SelectedUser)));

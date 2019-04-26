@@ -1,11 +1,6 @@
 const express = require('express');
 const pool = require('../modules/pool');
-
 const router = express.Router();
-
-// const upload = require('../services/multer');
-
-// const singleUpload = upload.single('image')
 
 router.get('/', (req, res) => {
   const queryText = `SELECT "tattoo"."id", "tattoo"."user_id", "user"."username", "tattoo"."ideal_timeframe", "styles"."styles", "tattoo"."description", "body_part"."areas", "tattoo"."email", "tattoo"."photos", "status"."status" FROM "tattoo" 

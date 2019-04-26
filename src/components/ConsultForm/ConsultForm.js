@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import UppyComp from '../UppyComp/UppyComp'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { yellow } from '@material-ui/core/colors';
+import UploadFile from '../UploadFile/UploadFile';
 
 
 const theme = createMuiTheme({
@@ -203,7 +204,8 @@ addNewTattoo = (event) => {
                         }}
                 />
 <br/>
-                <UppyComp/>
+                {/* <UppyComp/> */}
+                <UploadFile />
  <br/>
                 <Button variant="contained" color="primary" className={classes.button} onClick={this.addNewTattoo}>Submit</Button>          
             </MuiThemeProvider>
