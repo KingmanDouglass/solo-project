@@ -8,7 +8,7 @@ const router = express.Router();
 // const singleUpload = upload.single('image')
 
 router.get('/', (req, res) => {
-  const queryText = `SELECT "tattoo"."user_id", "user"."username", "tattoo"."ideal_timeframe", "styles"."styles", "tattoo"."description", "body_part"."areas", "tattoo"."email", "tattoo"."photos", "status"."status" FROM "tattoo" 
+  const queryText = `SELECT "tattoo"."id", "tattoo"."user_id", "user"."username", "tattoo"."ideal_timeframe", "styles"."styles", "tattoo"."description", "body_part"."areas", "tattoo"."email", "tattoo"."photos", "status"."status" FROM "tattoo" 
   JOIN "styles" ON "tattoo"."style_id" = "styles"."id"
   JOIN "user" ON "tattoo"."user_id" = "user"."id"
   JOIN "body_part" ON "tattoo"."area_id" = "body_part"."id"
@@ -168,7 +168,7 @@ router.put('/edit/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   console.log(`delete project`, req.params.id);
   
-  const sqlText = 'DELETE FROM "tattoo" WHERE user_id=$1';
+  const sqlText = 'DELETE FROM "tattoo" WHERE id=$1';
   pool.query(sqlText, [req.params.id])
     .then(() => { res.sendStatus(200); })
     .catch((err) => {

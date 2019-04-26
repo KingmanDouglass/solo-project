@@ -56,7 +56,7 @@ class Admin extends Component {
 
 //when delete is clicked, dispatch request to remove from database
     handleDelete = (event) => {
-      console.log('need to target specific ID', event.currentTarget.value);
+      console.log('need to target specific ID FOR DELETE', event.currentTarget.value);
         this.props.dispatch({ type: 'DELETE_TATTOO', payload: event.currentTarget.value })
 }
 
@@ -98,7 +98,7 @@ class Admin extends Component {
         </TableHead>
         <TableBody>
         {this.props.reduxState.tattoosReducer.map(tattoo => (
-            <TableRow key={tattoo.user_id}>
+            <TableRow key={tattoo.id}>
               <TableCell component="th" scope="row">
               <Typography className={classes.info} variant="h5" gutterBottom>
                 {tattoo.username}
@@ -126,7 +126,7 @@ class Admin extends Component {
               <Button value={tattoo.user_id} variant="contained" color="primary" className={classes.button} onClick={this.handleView}>View</Button>
               </TableCell>
               <TableCell component="th" scope="row">
-              <Button value={tattoo.user_id} variant="contained" color="primary" className={classes.button} onClick={this.handleDelete}>Delete</Button>
+              <Button value={tattoo.id} variant="contained" color="primary" className={classes.button} onClick={this.handleDelete}>Delete</Button>
               </TableCell>
             </TableRow>
           ))}

@@ -26,8 +26,6 @@ const styles = {
       // padding: 10,
       display: "inline-block",
       backgroundImage: `url(${Image})`,
-   
-
     },
     cardtwo: {
         minWidth: 450,
