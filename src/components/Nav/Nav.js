@@ -47,8 +47,7 @@ class Nav extends Component {
         OPIE SAN
         </Typography>
         <Typography className={classes.info} variant="h5" gutterBottom>
-        "LIVE LAUGH LOVE" 
-        <br/>- Bradley Hennen
+        Appointment Only - No Walk Ins
         </Typography>
         </MuiThemeProvider>
         

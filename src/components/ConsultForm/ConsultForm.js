@@ -9,6 +9,9 @@ import UppyComp from '../UppyComp/UppyComp'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { yellow } from '@material-ui/core/colors';
 import UploadFile from '../UploadFile/UploadFile';
+import qs from 'query-string'
+import { withRouter } from 'react-router'
+import Images from '../Images/Images';
 
 
 const theme = createMuiTheme({
@@ -207,7 +210,8 @@ addNewTattoo = (event) => {
                 {/* <UppyComp/> */}
                 <UploadFile />
  <br/>
-                <Button variant="contained" color="primary" className={classes.button} onClick={this.addNewTattoo}>Submit</Button>          
+                <Button variant="contained" color="primary" className={classes.button} onClick={this.addNewTattoo}>Submit</Button> 
+                <Images />         
             </MuiThemeProvider>
             </Card>
             </div>
@@ -219,4 +223,4 @@ const mapStateToProps = reduxState => ({
     reduxState,
 });
 
-export default connect(mapStateToProps)(withStyles(styles)(ConsultForm));
+export default withRouter(connect(mapStateToProps)(withStyles(styles)(ConsultForm)));

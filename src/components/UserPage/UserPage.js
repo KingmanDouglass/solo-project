@@ -83,9 +83,15 @@ links: {
 //holds the header and the map function
 class UserPage extends Component {
 
+  componentDidMount = () => {
+    this.props.dispatch({ type: 'GET_TATTOOS' });
+    // console.log('this.props.reduxState.tattooReducer.id', this.props.reduxState.tattoosReducer.id);
+}
+
   nextPage = (event) => {
+    console.log('need to bring tattoo ID over to consult form', event.currentTarget.value);
     console.log('this.props', this.props);
-    this.props.history.push('/form')
+    this.props.history.push(`/form?id=${event.currentTarget.value}`)
 }
 
     render() {
@@ -94,13 +100,15 @@ class UserPage extends Component {
             <section className="test">
             {/* <Nav/> */}
             <div className="consult">
+            {/* {this.props.reduxState.tattoosReducer.map(tattoo => ( */}
             <Paper className={classes.card} elevation={1}>
             <MuiThemeProvider theme={theme}>
             <p className={classes.consult}>
-                <Button onClick={this.nextPage} variant="contained" color="primary" className={classes.button}>Consult and Schedule</Button>
+                <Button value={tattoo.id} onClick={this.nextPage} variant="contained" color="primary" className={classes.button}>Consult and Schedule</Button>
             </p>
               </MuiThemeProvider>
             </Paper>
+            {/* ))} */}
             </div>
             <div className="links">
             <Paper className={classes.cardtwo} elevation={1}>
