@@ -88,6 +88,31 @@ class UserPage extends Component {
     // console.log('this.props.reduxState.tattooReducer.id', this.props.reduxState.tattoosReducer.id);
 }
 
+// conditionalRender = () => {
+//     if (this.props.reduxState.tattoosReducer && this.props.reduxState.tattoosReducer.length === 100) {
+//       console.log('what about here? - USER PAGE');
+  
+//         return <div><p>test</p></div>;
+//     }
+//     else {
+//       console.log('did i make it here? - USER PAGE');
+//       const { classes } = this.props;
+//       return (
+//         <div className="consult">
+//         {this.props.reduxState.tattoosReducer.map(tattoo => (
+//         <Paper className={classes.card} elevation={1}>
+//         <MuiThemeProvider theme={theme}>
+//         <p className={classes.consult}>
+//             <Button value={tattoo.id} onClick={this.nextPage} variant="contained" color="primary" className={classes.button}>Consult and Schedule</Button>
+//         </p>
+//           </MuiThemeProvider>
+//         </Paper>
+//         ))}
+//         </div>
+//       )
+//   }
+// }
+
   nextPage = (event) => {
     console.log('need to bring tattoo ID over to consult form', event.currentTarget.value);
     console.log('this.props', this.props);
@@ -99,16 +124,17 @@ class UserPage extends Component {
         return (
             <section className="test">
             {/* <Nav/> */}
-            <div className="consult">
-            {/* {this.props.reduxState.tattoosReducer.map(tattoo => ( */}
+           {/* {this.conditionalRender()} */}
+           <div className="consult">
+            {this.props.reduxState.tattoosReducer.map(tattoo => (
             <Paper className={classes.card} elevation={1}>
             <MuiThemeProvider theme={theme}>
             <p className={classes.consult}>
-                <Button value={tattoo.id} onClick={this.nextPage} variant="contained" color="primary" className={classes.button}>Consult and Schedule</Button>
+            <Button value={tattoo.id} onClick={this.nextPage} variant="contained" color="primary" className={classes.button}>Consult and Schedule</Button>
             </p>
-              </MuiThemeProvider>
+            </MuiThemeProvider>
             </Paper>
-            {/* ))} */}
+             ))}
             </div>
             <div className="links">
             <Paper className={classes.cardtwo} elevation={1}>
@@ -134,8 +160,9 @@ class UserPage extends Component {
 // Instead of taking everything from state, we just want the user info.
 // if you wanted you could write this code like this:
 // const mapStateToProps = ({user}) => ({ user });
-const mapStateToProps = state => ({
+const mapStateToProps = (reduxState, state) => ({
   user: state.user,
+  reduxState
 });
 
 // this allows us to use <App /> in index.js
