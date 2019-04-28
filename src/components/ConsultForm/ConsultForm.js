@@ -5,7 +5,6 @@ import Card from '@material-ui/core/Card';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import UppyComp from '../UppyComp/UppyComp'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { yellow } from '@material-ui/core/colors';
 import UploadFile from '../UploadFile/UploadFile';
@@ -207,7 +206,6 @@ addNewTattoo = (event) => {
                         }}
                 />
 <br/>
-                {/* <UppyComp/> */}
                 <UploadFile />
  <br/>
                 <Button variant="contained" color="primary" className={classes.button} onClick={this.addNewTattoo}>Submit</Button> 
