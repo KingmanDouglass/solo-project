@@ -88,50 +88,23 @@ class UserPage extends Component {
     // console.log('this.props.reduxState.tattooReducer.id', this.props.reduxState.tattoosReducer.id);
 }
 
-// conditionalRender = () => {
-//     if (this.props.reduxState.tattoosReducer && this.props.reduxState.tattoosReducer.length === 100) {
-//       console.log('what about here? - USER PAGE');
-  
-//         return <div><p>test</p></div>;
-//     }
-//     else {
-//       console.log('did i make it here? - USER PAGE');
-//       const { classes } = this.props;
-//       return (
-//         <div className="consult">
-//         {this.props.reduxState.tattoosReducer.map(tattoo => (
-//         <Paper className={classes.card} elevation={1}>
-//         <MuiThemeProvider theme={theme}>
-//         <p className={classes.consult}>
-//             <Button value={tattoo.id} onClick={this.nextPage} variant="contained" color="primary" className={classes.button}>Consult and Schedule</Button>
-//         </p>
-//           </MuiThemeProvider>
-//         </Paper>
-//         ))}
-//         </div>
-//       )
-//   }
-// }
-
   nextPage = (event) => {
-    console.log('need to bring tattoo ID over to consult form', event.currentTarget.value);
+    console.log('need to bring tattoo ID over to consult form', this.props.reduxState.tattoosReducer.id);
     console.log('this.props', this.props);
-    // this.props.history.push(`/form?id=${event.currentTarget.value}`)
-    this.props.history.push('/form')
+    // this.props.history.push('/form')
+    this.props.history.push(`/form?id=${event.currentTarget.value}`)
 }
 
     render() {
         const { classes } = this.props;
         return (
-            <section className="test">
-            {/* <Nav/> */}
-           {/* {this.conditionalRender()} */}
+          <section className="test">
            <div className="consult">
             {/* {this.props.reduxState.tattoosReducer.map(tattoo => ( */}
             <Paper className={classes.card} elevation={1}>
             <MuiThemeProvider theme={theme}>
             <p className={classes.consult}>
-            <Button value={tattoo.id} onClick={this.nextPage} variant="contained" color="primary" className={classes.button}>Consult and Schedule</Button>
+            <Button onClick={this.nextPage} variant="contained" color="primary" className={classes.button}>Consult and Schedule</Button>
             </p>
             </MuiThemeProvider>
             </Paper>
