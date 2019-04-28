@@ -116,7 +116,8 @@ class UserPage extends Component {
   nextPage = (event) => {
     console.log('need to bring tattoo ID over to consult form', event.currentTarget.value);
     console.log('this.props', this.props);
-    this.props.history.push(`/form?id=${event.currentTarget.value}`)
+    // this.props.history.push(`/form?id=${event.currentTarget.value}`)
+    this.props.history.push('/form')
 }
 
     render() {
@@ -126,7 +127,7 @@ class UserPage extends Component {
             {/* <Nav/> */}
            {/* {this.conditionalRender()} */}
            <div className="consult">
-            {this.props.reduxState.tattoosReducer.map(tattoo => (
+            {/* {this.props.reduxState.tattoosReducer.map(tattoo => ( */}
             <Paper className={classes.card} elevation={1}>
             <MuiThemeProvider theme={theme}>
             <p className={classes.consult}>
@@ -134,7 +135,7 @@ class UserPage extends Component {
             </p>
             </MuiThemeProvider>
             </Paper>
-             ))}
+             {/* ))} */}
             </div>
             <div className="links">
             <Paper className={classes.cardtwo} elevation={1}>

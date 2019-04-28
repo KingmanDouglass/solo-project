@@ -7,11 +7,12 @@ router.get('/', (req, res) => {
   JOIN "styles" ON "tattoo"."style_id" = "styles"."id"
   JOIN "user" ON "tattoo"."user_id" = "user"."id"
   JOIN "body_part" ON "tattoo"."area_id" = "body_part"."id"
-  JOIN "status" ON "tattoo"."status_id" = "status"."id";`;
+  JOIN "status" ON "tattoo"."status_id" = "status"."id"
+  `;
   pool.query(queryText)
     .then((result) => { res.send(result.rows); })
     .catch((err) => {
-      console.log('Error completing SELECT plant query', err);
+      console.log('Error completing SELECT tatoo query', err);
       res.sendStatus(500);
     });
 });
