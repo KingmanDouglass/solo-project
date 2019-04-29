@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client';
 import Input from './Input';
 import MessageList from './MessageList';
+import { connect } from 'react-redux';
 require('dotenv').config();
 
 class ChatApp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentUser: null,
+            currentUser: '',
             currentRoom: { users: [] },
             messages: [],
             users: []
@@ -16,9 +17,21 @@ class ChatApp extends Component {
         this.addMessage = this.addMessage.bind(this);
     }
 
+    // componentDidUpdate(prevProps) {
+    //     // Typical usage (don’t forget to compare props):
+    //     // console.log(‘prevProps’, prevProps);
+ 
+    //     if (this.props.reduxState.user.username !== prevProps.reduxState.user.username) {
+    //         this.setState({
+    //             currentUser: this.props.reduxState.user.username
+    //         })
+    //     };
+    // }
+
     componentDidMount() {
+        // this.props.dispatch({ type: 'FETC' });
         const chatManager = new ChatManager({
-            instanceLocator: "SEE ENV",
+            instanceLocator: 'SEE ENV',
             userId: 'SEE ENV',
             tokenProvider: new TokenProvider({
                 url: 'SEE ENV'
@@ -31,7 +44,7 @@ class ChatApp extends Component {
                 this.setState({ currentUser: currentUser })
 
                 return currentUser.subscribeToRoom({
-                    roomId: "SEE ENV",
+                    roomId: 'SEE ENV',
                     messageLimit: 100,
                     hooks: {
                         onMessage: message => {
@@ -49,7 +62,7 @@ class ChatApp extends Component {
                 })
             })
             .catch(error => console.log(error))
-        }
+    }
 
 
     addMessage(text) {
@@ -72,4 +85,10 @@ class ChatApp extends Component {
         )
     }
 }
-export default ChatApp;
+
+
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState
+    });
+
+export default connect(mapReduxStateToProps)(ChatApp);

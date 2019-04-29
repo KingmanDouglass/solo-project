@@ -92,6 +92,16 @@ class Admin extends Component {
         Description
             </Typography>
             </TableCell>
+            <TableCell>
+            <Typography className={classes.info} variant="h5" gutterBottom>
+        View
+            </Typography>
+            </TableCell>
+            <TableCell>
+            <Typography className={classes.info} variant="h5" gutterBottom>
+        Delete
+            </Typography>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

@@ -94,10 +94,12 @@
     font-weight: bold;
     font-size: 1em;
     margin: 0;
+    color: black;
   }
   .message-text  {
     margin-bottom: 20px;
-    margin-top: 5px
+    margin-top: 5px;
+    color: red;
   }
   .message-input  {
     width: 70%;
