@@ -40,7 +40,8 @@ input {
 .clientInfo {
     color: white;
     text-align: left;
-    
+    font-size: 25px;
+    font-family: 'Righteous', cursive
 }
 
 .clientPhotos {

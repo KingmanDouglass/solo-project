@@ -210,7 +210,7 @@ addNewTattoo = (event) => {
                 <UploadFile />
  <br/>
                 <Button variant="contained" color="primary" className={classes.button} onClick={this.addNewTattoo}>Submit</Button> 
-                <Images />         
+                {/* <Images />          */}
             </MuiThemeProvider>
             </Card>
             </div>

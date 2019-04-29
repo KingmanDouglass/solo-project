@@ -12,7 +12,7 @@ export const sendFileToServer = file => {
     }})
     .then(response => {
         verbose && console.log('successfully uploaded to the S3: ', response);
-        window.location.reload();
+        // window.location.reload();
     })
     .catch(error => {
         verbose && console.log('error uploading file: ', error);

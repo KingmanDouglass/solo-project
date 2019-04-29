@@ -8,7 +8,8 @@ class UploadFile extends Component {
     return (
       <div className="container">
         <div className="uploads-container">
-          <h3>Upload Reference Photo</h3>
+        <br/>
+          {/* <h3>Upload Reference Photo</h3> */}
           <RawInputField />
         </div>
         <div className="images-container">

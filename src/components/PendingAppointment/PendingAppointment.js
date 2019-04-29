@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Moment from 'react-moment';
 
 
+
 const styles = {
   card: {
     minWidth: 940,
@@ -39,25 +40,25 @@ class PendingAppointment extends Component {
       <Paper className={classes.card} elevation={1}>
       <div>
       <Typography className={classes.info} variant="h5" gutterBottom>
-      <p>Name: {tattoo.username}</p>
+      <p className="clientInfo">Name: {tattoo.username}</p>
       </Typography>
       <Typography className={classes.info} variant="h5" gutterBottom>
-      <p>Description: {tattoo.description}</p>
+      <p className="clientInfo">Description: {tattoo.description}</p>
       </Typography>
       <Typography className={classes.info} variant="h5" gutterBottom>
-      <p>Email: {tattoo.email}</p>
+      <p className="clientInfo">Email: {tattoo.email}</p>
       </Typography>
       <Typography className={classes.info} variant="h5" gutterBottom>
-      <p>Placement: {tattoo.areas}</p>
+      <p className="clientInfo">Placement: {tattoo.areas}</p>
       </Typography>
       <Typography className={classes.info} variant="h5" gutterBottom>
-      <p>Ideal Timeframe: <Moment format="MM/DD/YY" date={tattoo.ideal_timeframe}/></p>
+      <p className="clientInfo">Ideal Timeframe: <Moment format="MM/DD/YY" date={tattoo.ideal_timeframe}/></p>
       </Typography>
       <Typography className={classes.info} variant="h5" gutterBottom>
-      <p>Appointment: {tattoo.name}</p>
+      <p className="clientInfo">Appointment: {tattoo.name}</p>
       </Typography>
       <Typography className={classes.info} variant="h5" gutterBottom>
-      <p>Status: {tattoo.status}</p>
+      <p className="clientInfo">Status: {tattoo.status}</p>
       </Typography>
       <img src = {tattoo.photos}/>
       </div>

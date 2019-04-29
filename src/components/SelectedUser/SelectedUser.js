@@ -45,7 +45,8 @@ const styles = {
   },
   info: {
     color: 'white',
-    fontSize: 13
+    fontSize: 25,
+    fontFamily: 'Righteous'
   },
   textField: {
     width: 200,
@@ -140,7 +141,7 @@ render() {
     {/* <Typography className={classes.info} variant="h5" gutterBottom> Name: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('username')} defaultValue={`${tattoo.username}`}/> : 
     tattoo.username} </Typography> */}
     <Typography className={classes.info} variant="h5" gutterBottom>
-    <p>Name: {tattoo.username}</p>
+    <p className="clientInfo">Name: {tattoo.username}</p>
     </Typography>
 
 
@@ -148,7 +149,7 @@ render() {
     tattoo.description} </Typography>
 
     <Typography className={classes.info} variant="h5" gutterBottom>
-    <p>Email: {tattoo.email}</p>
+    <p className="clientInfo">Email: {tattoo.email}</p>
     </Typography>
 
 
@@ -182,7 +183,7 @@ render() {
                     
 
     <Typography className={classes.info} variant="h5" gutterBottom>
-    <p>Ideal Timeframe: <Moment format="MM/DD/YY" date={tattoo.ideal_timeframe}/></p>
+    <p className="clientInfo">Ideal Timeframe: <Moment format="MM/DD/YY" date={tattoo.ideal_timeframe}/></p>
     </Typography>
 
     {/* <Typography className={classes.info} variant="h5" gutterBottom> Ideal Timeframe: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('ideal_timeframe')} defaultValue={`${tattoo.ideal_timeframe}`}/> : 

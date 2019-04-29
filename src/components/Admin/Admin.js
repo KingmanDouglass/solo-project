@@ -40,7 +40,8 @@ const styles = theme => ({
     },
     info: {
       color: 'white',
-      fontSize: 13
+      fontSize: 18,
+      fontFamily: 'Righteous'
     }
   });
 
