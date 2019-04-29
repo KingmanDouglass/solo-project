@@ -45,9 +45,10 @@ const styles = {
     width: 200,
   },
   textField: {
-    // marginLeft: theme.spacing.unit,
-    // marginRight: theme.spacing.unit,
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
     width: 200,
+    // padding: 5,
   },
   description: {
     // marginLeft: theme.spacing.unit,
@@ -132,7 +133,7 @@ addNewTattoo = (event) => {
                     margin="normal"
                     variant="filled"
         />
-<br/>     
+{/* <br/>      */}
                 <TextField
                     id="filled-name"
                     label="Description"

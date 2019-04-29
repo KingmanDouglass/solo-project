@@ -10,7 +10,7 @@ class RawInputField extends Component {
 
   render() {
     return (
-      <div>
+      <div className="location">
         <input type="file" onChange={this.triggerFileSend}/>
       </div>
     );

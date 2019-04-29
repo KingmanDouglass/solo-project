@@ -13,6 +13,7 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import qs from 'query-string'
 import { withRouter } from 'react-router'
+import Moment from 'react-moment';
 
 
 const theme = createMuiTheme({
@@ -142,7 +143,7 @@ render() {
     <p>Name: {tattoo.username}</p>
     </Typography>
 
-    
+
     <Typography className={classes.info} variant="h5" gutterBottom> Description: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('description')} defaultValue={`${tattoo.description}`}/> : 
     tattoo.description} </Typography>
 
@@ -181,9 +182,8 @@ render() {
                     
 
     <Typography className={classes.info} variant="h5" gutterBottom>
-    <p>Ideal Timeframe: {tattoo.ideal_timeframe}</p>
+    <p>Ideal Timeframe: <Moment format="MM/DD/YY" date={tattoo.ideal_timeframe}/></p>
     </Typography>
-
 
     {/* <Typography className={classes.info} variant="h5" gutterBottom> Ideal Timeframe: {this.state.editCurrent === true ? <TextField style={{backgroundColor: 'white'}} onChange={this.handleChange('ideal_timeframe')} defaultValue={`${tattoo.ideal_timeframe}`}/> : 
     tattoo.ideal_timeframe} </Typography> */}

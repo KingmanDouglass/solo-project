@@ -11,8 +11,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Footer from '../Footer/Footer'
-// import Moment from 'react-moment';
 
 const theme = createMuiTheme({
   palette: {
@@ -104,9 +102,6 @@ class Admin extends Component {
                 {tattoo.username}
                 </Typography>
               </TableCell>
-              {/* <TableCell component="th" scope="row">
-                <Moment format="YYYY/MM/DD" date={tattoo.ideal_timeframe}/>
-              </TableCell> */}
               <TableCell>
               <Typography className={classes.info} variant="h5" gutterBottom>
                 {tattoo.status}

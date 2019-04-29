@@ -4,7 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import ChatKit from '../ChatKit/ChatMaster'
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import CardMedia from '@material-ui/core/CardMedia';
+import Moment from 'react-moment';
+
 
 const styles = {
   card: {
@@ -50,7 +51,7 @@ class PendingAppointment extends Component {
       <p>Placement: {tattoo.areas}</p>
       </Typography>
       <Typography className={classes.info} variant="h5" gutterBottom>
-      <p>Ideal Timeframe: {tattoo.ideal_timeframe}</p>
+      <p>Ideal Timeframe: <Moment format="MM/DD/YY" date={tattoo.ideal_timeframe}/></p>
       </Typography>
       <Typography className={classes.info} variant="h5" gutterBottom>
       <p>Appointment: {tattoo.name}</p>
