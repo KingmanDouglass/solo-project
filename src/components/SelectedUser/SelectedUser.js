@@ -14,6 +14,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import qs from 'query-string'
 import { withRouter } from 'react-router'
 import Moment from 'react-moment';
+import Images from '../Images/Images';
 
 
 const theme = createMuiTheme({
@@ -164,7 +165,6 @@ render() {
     style={{backgroundColor: 'white'}}
     className={classes.textField}
     value={this.state.changeField.area_id}
-    style={{backgroundColor: 'white', color: 'black'}} 
     onChange={this.handleChange('area_id')}
     SelectProps={{
         MenuProps: {
@@ -199,7 +199,6 @@ render() {
     style={{backgroundColor: 'white'}}
     value={this.state.changeField.status_id}
     className={classes.textField}
-    style={{backgroundColor: 'white'}} 
     onChange={this.handleChange('status_id')}
     SelectProps={{
         MenuProps: {
@@ -224,6 +223,7 @@ render() {
     </MuiThemeProvider>
     </div>
     <img src = {tattoo.photos}/>
+    <Images/>
     </Paper>
     )}</div>
 

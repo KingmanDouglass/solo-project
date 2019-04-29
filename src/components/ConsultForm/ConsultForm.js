@@ -8,9 +8,9 @@ import Button from '@material-ui/core/Button';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { yellow } from '@material-ui/core/colors';
 import UploadFile from '../UploadFile/UploadFile';
-import qs from 'query-string'
+// import qs from 'query-string'
 import { withRouter } from 'react-router'
-import Images from '../Images/Images';
+// import Images from '../Images/Images';
 
 
 const theme = createMuiTheme({

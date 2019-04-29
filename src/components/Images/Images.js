@@ -9,16 +9,32 @@ class Images extends Component {
     }
   }
   componentDidMount = () => {
-    axios.get('api/post')
-      .then(response => {
-        this.setState({
-          images: response.data
-        })
-      })
-      .catch(error => {
-        console.log('Error getting images: ', error);
-      })
+    this.getImagesForPending();
   }
+
+  getImagesForPending = () => {
+    axios.get('api/post')
+    .then(response => {
+      this.setState({
+        images: response.data
+      })
+    })
+    .catch(error => {
+      console.log('Error getting images: ', error);
+    })
+}
+
+getImagesForAdmin = () => {
+  axios.get('api/post/admin')
+  .then(response => {
+    this.setState({
+      images: response.data
+    })
+  })
+  .catch(error => {
+    console.log('Error getting images: ', error);
+  })
+}
 
   render() {
     return (

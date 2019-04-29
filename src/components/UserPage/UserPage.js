@@ -85,14 +85,14 @@ class UserPage extends Component {
 
   componentDidMount = () => {
     this.props.dispatch({ type: 'GET_TATTOOS' });
-    // console.log('this.props.reduxState.tattooReducer.id', this.props.reduxState.tattoosReducer.id);
+    console.log('this.props.reduxState.user.username', this.props.reduxState.user.username);
 }
 
   nextPage = (event) => {
     console.log('need to bring tattoo ID over to consult form', this.props.reduxState.tattoosReducer.id);
     console.log('this.props', this.props);
     // this.props.history.push('/form')
-    this.props.history.push(`/form?id=${event.currentTarget.value}`)
+    this.props.history.push(`/form?username=${this.props.reduxState.user.username}`)
 }
 
     render() {

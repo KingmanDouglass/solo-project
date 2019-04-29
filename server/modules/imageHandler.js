@@ -113,11 +113,11 @@ function uploadToSQL(req, media_key, res) {
     console.log('HEY I GOT TO uploadToSQL');
   return new Promise(resolve => {
     const queryText = `INSERT INTO post 
-                        ("media_key")
+                        ("media_key", "user_id")
                         VALUES
-                        ($1)`;
+                        ($1, $2)`;
     
-    pool.query(queryText, [media_key])
+    pool.query(queryText, [media_key, req.user.id])
       .then((result) => {
         verbose && console.log('back from db with:', result);
         res.sendStatus(200);

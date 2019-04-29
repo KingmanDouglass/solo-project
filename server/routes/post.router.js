@@ -34,8 +34,15 @@ router.post('/imageAndText', upload.single('file'), (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    const queryText = `SELECT * from post`;
-    pool.query(queryText)
+    const queryText = `SELECT * from post WHERE "user_id"=$1`;
+    pool.query(queryText, [req.user.id])
+        .then(response => { generateSignedUrls(res, response.rows) })
+        .catch(error => { res.sendStatus(500) })
+})
+
+router.get('/admin', (req, res) => {
+    const queryText = `SELECT * from post WHERE "user_id"=$1`;
+    pool.query(queryText, [req.user.id])
         .then(response => { generateSignedUrls(res, response.rows) })
         .catch(error => { res.sendStatus(500) })
 })

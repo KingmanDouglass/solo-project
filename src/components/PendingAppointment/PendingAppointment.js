@@ -5,6 +5,7 @@ import ChatKit from '../ChatKit/ChatMaster'
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Moment from 'react-moment';
+import Images from '../Images/Images'
 
 
 
@@ -60,7 +61,9 @@ class PendingAppointment extends Component {
       <Typography className={classes.info} variant="h5" gutterBottom>
       <p className="clientInfo">Status: {tattoo.status}</p>
       </Typography>
+      <img src = {tattoo.media_key}/>
       <img src = {tattoo.photos}/>
+      <Images/>
       </div>
       </Paper>
       )}</div>
