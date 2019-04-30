@@ -24,17 +24,17 @@ class Images extends Component {
     })
 }
 
-// getImagesForAdmin = () => {
-//   axios.get('api/post/admin')
-//   .then(response => {
-//     this.setState({
-//       images: response.data
-//     })
-//   })
-//   .catch(error => {
-//     console.log('Error getting images: ', error);
-//   })
-// }
+getImagesForAdmin = () => {
+  axios.get('api/post/admin')
+  .then(response => {
+    this.setState({
+      images: response.data
+    })
+  })
+  .catch(error => {
+    console.log('Error getting images: ', error);
+  })
+}
 
   render() {
     return (
