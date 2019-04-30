@@ -11,6 +11,11 @@ body {
     margin: 50px;
 }
 
+.image {
+    height: 400px;
+    width: auto
+}
+
 /* form {
     background-color: #dbd5d5;
     width: 30%;

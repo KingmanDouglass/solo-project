@@ -116,11 +116,21 @@ handleChange = propertyName => {
   return(event) =>{
   this.setState({
     changeField: {
-          ...this.state.changeField,
+           ...this.state.changeField,
           [propertyName]: event.target.value,
       }
   });
 }
+}
+
+conditionalRender = () => {
+  if ( 4 === 66 ) {
+    return <p>lol</p>
+  } else {
+    return <div>
+      <AdminImages/>
+      </div>
+  }
 }
 
 
@@ -223,7 +233,8 @@ render() {
     </MuiThemeProvider>
     </div>
     <img src = {tattoo.photos}/>
-    <AdminImages/>
+    {/* <AdminImages/> */}
+    {this.conditionalRender()}
     </Paper>
     )}</div>
 
