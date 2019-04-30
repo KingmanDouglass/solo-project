@@ -14,7 +14,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import qs from 'query-string'
 import { withRouter } from 'react-router'
 import Moment from 'react-moment';
-import Images from '../Images/Images';
+import AdminImages from '../AdminImages/AdminImages';
 
 
 const theme = createMuiTheme({
@@ -223,7 +223,7 @@ render() {
     </MuiThemeProvider>
     </div>
     <img src = {tattoo.photos}/>
-    <Images/>
+    <AdminImages/>
     </Paper>
     )}</div>
 

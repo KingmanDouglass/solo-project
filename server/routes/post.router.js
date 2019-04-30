@@ -40,9 +40,13 @@ router.get('/', (req, res) => {
         .catch(error => { res.sendStatus(500) })
 })
 
-router.get('/admin', (req, res) => {
+router.get('/admin/:id', (req, res) => {
+    console.log('ADMIN AWS SHOW ME THE USER ID', req.params.id);
+    console.log('ADMIN AWS SHOW ME THE USER ID', req.params);
+    const adminId = req.params.id
+    console.log('TAKE TWO - - - - ADMIN AWS SHOW ME THE USER ID', adminId);
     const queryText = `SELECT * from post WHERE "user_id"=$1`;
-    pool.query(queryText, [req.user.id])
+    pool.query(queryText, [req.params.id])
         .then(response => { generateSignedUrls(res, response.rows) })
         .catch(error => { res.sendStatus(500) })
 })

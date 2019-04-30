@@ -62,6 +62,7 @@ class Admin extends Component {
     handleView = (event) => {
       console.log('need to target specific ID', event.currentTarget.value);
       this.props.dispatch({ type: 'GET_CURRENT_ID', payload: event.currentTarget.value });
+      this.props.dispatch({ type: 'GET_ID_ADMIN', payload: event.currentTarget.value });
       this.props.history.push(`/selecteduser?id=${event.currentTarget.value}`);
         }
 
