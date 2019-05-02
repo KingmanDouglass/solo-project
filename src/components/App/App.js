@@ -11,6 +11,7 @@ import {connect} from 'react-redux';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import AdminProtectedRoute from '../ProtectedRoute/AdminProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
@@ -87,7 +88,7 @@ class App extends Component {
               path="/pendingappointment"
               component={PendingAppointment}
             />
-             <ProtectedRoute
+             <AdminProtectedRoute
               exact
               path="/admin"
               component={Admin}
