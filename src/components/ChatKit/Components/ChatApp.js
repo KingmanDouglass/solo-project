@@ -31,10 +31,10 @@ class ChatApp extends Component {
     componentDidMount() {
         // this.props.dispatch({ type: 'FETC' });
         const chatManager = new ChatManager({
-            instanceLocator: 'SEE ENV',
-            userId: 'SEE ENV',
+            instanceLocator: "v1:us1:8291d128-e9b0-42cb-8ffc-ae3d1d7f5eca",
+            userId: 'Opie',
             tokenProvider: new TokenProvider({
-                url: 'SEE ENV'
+                url: "https://us1.pusherplatform.io/services/chatkit_token_provider/v1/8291d128-e9b0-42cb-8ffc-ae3d1d7f5eca/token"
             })
         })
 
@@ -44,7 +44,7 @@ class ChatApp extends Component {
                 this.setState({ currentUser: currentUser })
 
                 return currentUser.subscribeToRoom({
-                    roomId: 'SEE ENV',
+                    roomId: '19392062',
                     messageLimit: 100,
                     hooks: {
                         onMessage: message => {
