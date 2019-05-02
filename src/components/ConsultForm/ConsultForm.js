@@ -8,11 +8,10 @@ import Button from '@material-ui/core/Button';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { yellow } from '@material-ui/core/colors';
 import UploadFile from '../UploadFile/UploadFile';
-// import qs from 'query-string'
 import { withRouter } from 'react-router'
-// import Images from '../Images/Images';
 
 
+//created material ui theme for yellow buttons
 const theme = createMuiTheme({
     palette: {
       primary: yellow,
@@ -63,6 +62,8 @@ const styles = {
 };
 
 class ConsultForm extends Component {
+    //state for form submitting ideas
+    //all statuses will begin as 2(pending)
     state = {
         newTattoo: {
             name: '',
@@ -77,6 +78,7 @@ class ConsultForm extends Component {
         }
     }
 
+    //reset and spread the state based off of what is being targeted
     handleChange = propertyName => event => {
         this.setState({
             newTattoo: {
@@ -86,6 +88,7 @@ class ConsultForm extends Component {
         })
 }
 
+//go into db to grab all the listed stles and body part playment areas
 componentDidMount = () => {
     this.props.dispatch({ type: 'GET_BODY_PARTS' });
     console.log('GET_BODY_PARTS', this.props.reduxState.bodyPartReducer);
@@ -93,6 +96,7 @@ componentDidMount = () => {
     this.props.dispatch({ type: 'GET_STYLES' });
 }
 
+//upon submit send us back to HOME and dispatch out the information to the saga
 addNewTattoo = (event) => {
     console.log('need to post ID', this.state.newTattoo);
       this.props.dispatch({ type: 'ADD_TATTOO', payload: this.state.newTattoo })

@@ -12,6 +12,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+//material ui created theme for yellow buttons
 const theme = createMuiTheme({
   palette: {
     primary: yellow,
@@ -45,7 +46,7 @@ const styles = theme => ({
     }
   });
 
-//displays all the information from the database and does a map to acquire all the tag inputs
+//displays all the information from the database and does a map to acquire all the admin inputs
 class Admin extends Component {
     
 //get all the information from the database as well as retrigger upon delete
@@ -59,13 +60,19 @@ class Admin extends Component {
         this.props.dispatch({ type: 'DELETE_TATTOO', payload: event.currentTarget.value })
 }
 
+//on the click of view trigger page change and reducer storing
     handleView = (event) => {
       console.log('need to target specific ID', event.currentTarget.value);
+      //takes the value of the button to store the ID of the pipeline submission being clicked
       this.props.dispatch({ type: 'GET_CURRENT_ID', payload: event.currentTarget.value });
+      //takes the value of the button to store the ID of the pipeline submission being clicked but needs to be different to store a different get request
       this.props.dispatch({ type: 'GET_ID_ADMIN', payload: event.currentTarget.value });
+      //push to selected user and store the ID that is being viewed in the URL
       this.props.history.push(`/selecteduser?id=${event.currentTarget.value}`);
         }
 
+
+    //set up the table to be displayed and map over the tattoo reducer to display all necessary information
     render() {
         const { classes } = this.props;
         return (

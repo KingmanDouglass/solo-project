@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 require('dotenv').config();
 
 class ChatApp extends Component {
+    //set state for the user and room that is being used
     constructor(props) {
         super(props);
         this.state = {
@@ -28,6 +29,7 @@ class ChatApp extends Component {
     //     };
     // }
 
+    //create instance and who is logged in with a new token
     componentDidMount() {
         // this.props.dispatch({ type: 'FETC' });
         const chatManager = new ChatManager({
@@ -37,14 +39,14 @@ class ChatApp extends Component {
                 url: "https://us1.pusherplatform.io/services/chatkit_token_provider/v1/8291d128-e9b0-42cb-8ffc-ae3d1d7f5eca/token"
             })
         })
-
+        //connect to the API and reset the state as who is logged in and where
         chatManager
             .connect()
             .then(currentUser => {
                 this.setState({ currentUser: currentUser })
 
                 return currentUser.subscribeToRoom({
-                    roomId: '19392062',
+                    roomId: '19394153',
                     messageLimit: 100,
                     hooks: {
                         onMessage: message => {
@@ -64,7 +66,7 @@ class ChatApp extends Component {
             .catch(error => console.log(error))
     }
 
-
+    //pull all the messages from the given room
     addMessage(text) {
         console.log(this.state);
         this.state.currentUser.sendMessage({

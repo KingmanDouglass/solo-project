@@ -10,9 +10,7 @@ import {connect} from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
-
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
@@ -27,12 +25,14 @@ import LogOutPage from '../LogOutPage/LogOutPage'
 import './App.css';
 
 class App extends Component {
+
+  //get the user that is currently logged in
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'})
   }
 
 
-
+//set up routes for the router and what is being displayed
   render() {
     console.log('where is my route - props', this.props);
     
