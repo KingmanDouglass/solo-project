@@ -10,10 +10,14 @@ function* deleteEntry(action) {
         console.log(payload);
         
         console.log('DELETE current user from pipeline', payload);
-        const getResponse = yield axios.delete(`/api/tattoo/${payload}`);
-        console.log('getResponse:', getResponse);
+        yield axios.delete(`/api/tattoo/otherexample/${payload}`);
         
-        const action = {type: 'GET_TATTOOS', payload: getResponse.data};
+
+        console.log('DELETE current user from pipeline', payload);
+        yield axios.delete(`/api/tattoo/example/${payload}`);
+        
+        
+        const action = {type: 'GET_TATTOOS'};
         yield put(action);
     }catch (error) {
         console.log(`Couldn't DELETE the current user`);

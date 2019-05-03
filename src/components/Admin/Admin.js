@@ -140,7 +140,7 @@ class Admin extends Component {
               <Button value={tattoo.user_id} variant="contained" color="primary" className={classes.button} onClick={this.handleView}>View</Button>
               </TableCell>
               <TableCell component="th" scope="row">
-              <Button value={tattoo.id} variant="contained" color="primary" className={classes.button} onClick={this.handleDelete}>Delete</Button>
+              <Button value={tattoo.user_id} variant="contained" color="primary" className={classes.button} onClick={this.handleDelete}>Delete</Button>
               </TableCell>
             </TableRow>
           ))}

@@ -165,7 +165,7 @@ router.put('/edit/:id', (req, res) => {
 //   });
 // })
 
-router.delete('/:id', (req, res) => {
+router.delete('/otherexample/:id', (req, res) => {
   console.log(`delete project`, req.params.id);
   
   const sqlText = 'DELETE FROM "tattoo" WHERE id=$1';
@@ -176,5 +176,18 @@ router.delete('/:id', (req, res) => {
       res.sendStatus(500);
     });
 });
+
+router.delete('/example/:id', (req, res) => {
+  console.log(`delete project`, req.params.id);
+  
+  const sqlText = 'DELETE FROM "post" WHERE user_id=$1';
+  pool.query(sqlText, [req.params.id])
+    .then(() => { res.sendStatus(200); })
+    .catch((err) => {
+      console.log('Error deleting selected project query', err);
+      res.sendStatus(500);
+    });
+});
+
 
 module.exports = router;
