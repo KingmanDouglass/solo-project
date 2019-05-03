@@ -34,7 +34,7 @@ class ChatApp extends Component {
         // this.props.dispatch({ type: 'FETC' });
         const chatManager = new ChatManager({
             instanceLocator: "v1:us1:8291d128-e9b0-42cb-8ffc-ae3d1d7f5eca",
-            userId: 'Opie',
+            userId: 'Juno',
             tokenProvider: new TokenProvider({
                 url: "https://us1.pusherplatform.io/services/chatkit_token_provider/v1/8291d128-e9b0-42cb-8ffc-ae3d1d7f5eca/token"
             })
