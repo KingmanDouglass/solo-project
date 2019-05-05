@@ -78,6 +78,17 @@ class ConsultForm extends Component {
         }
     }
 
+    fiendsPresentation=()=>{
+        console.log('in fieldsPresentation')
+        this.setState({
+            newTattoo: {
+             name: 'Juno',
+             description: 'the prime logo',
+             email: 'Juno@gmail.com',
+            }
+        })
+      }
+
     //reset and spread the state based off of what is being targeted
     handleChange = propertyName => event => {
         this.setState({
@@ -216,6 +227,7 @@ addNewTattoo = (event) => {
                 <Button variant="contained" color="primary" className={classes.button} onClick={this.addNewTattoo}>Submit</Button> 
                 {/* <Images />          */}
             </MuiThemeProvider>
+            <div className="presentation" onClick={this.fiendsPresentation}></div>
             </Card>
             </div>
         );

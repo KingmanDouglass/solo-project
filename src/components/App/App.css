@@ -16,6 +16,11 @@ body {
     width: auto
 }
 
+.presentation {
+    height: 400px;
+    background-color: black
+}
+
 /* form {
     background-color: #dbd5d5;
     width: 30%;
